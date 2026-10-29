@@ -11,6 +11,9 @@ class Scenario
 public:
 	// Creates a new Scenario object
 	Scenario();
+
+	// Displays an emergency scenario and its choices.
+	void Display();
 };
 
 #endif
