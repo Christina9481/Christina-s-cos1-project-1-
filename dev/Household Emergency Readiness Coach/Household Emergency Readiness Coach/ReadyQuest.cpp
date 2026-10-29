@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Lesson.h"
 #include "Scenario.h"
+#include "Household.h"
 
 // Defines the ReadyQuest constructor.
 ReadyQuest::ReadyQuest()
@@ -46,8 +47,12 @@ void ReadyQuest::Run()
 			break;
 		}
 		case 3:
-			std::cout << "Household Preparedness Information selected.\n";
+		{
+			// Creates a household object and displays preparedness information.
+			Household household;
+			household.Display();
 			break;
+		}
 
 		case 4:
 			std::cout << "Progress and Achievements selected.\n";
