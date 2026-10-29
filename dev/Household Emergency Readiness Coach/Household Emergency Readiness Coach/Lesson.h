@@ -10,6 +10,9 @@ class Lesson
 public:
 	// Creates a new Lesson object.
 	Lesson();
+
+	// Displays an emergency preparedness lesson.
+	void Display();
 };
 
 #endif

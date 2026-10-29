@@ -1,5 +1,6 @@
 #include "ReadyQuest.h"
 #include <iostream>
+#include "Lesson.h"
 
 // Defines the ReadyQuest constructor.
 ReadyQuest::ReadyQuest()
@@ -29,8 +30,12 @@ void ReadyQuest::Run()
 		switch (choice)
 		{
 		case 1:
-			std::cout << "Emergency Lessons selected.\n";
+		{
+			// Creates a lesson and displays its safety tips
+			Lesson lesson;
+			lesson.Display();
 			break;
+		}
 
 		case 2:
 			std::cout << "Interactive Scenarios selected.\n";
