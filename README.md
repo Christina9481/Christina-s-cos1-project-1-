@@ -22,9 +22,9 @@ After completing the above steps, feel free to begin updating this readme where 
 
 # Project & Portfolio 1
 
-### Student First & Last Name
+### Christina Coursey
 
-Hello my name is [enter name]. I am a student from [where are you from?]. The purpose of this repository is to practice development using version control. This work will help me begin to build a portfolio of skills and accomplishment that can be shared in the future.
+Hello my name is Christina I am a student from North Carolina. The purpose of this repository is to practice development using version control. This work will help me begin to build a portfolio of skills and accomplishments that can be shared in the future
 
 <br>
 
@@ -42,9 +42,28 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 <br>
 
-### Week 1
+### Week 1-- ReadyQuest
 
-Replace this paragraph with your stand up for this week. Use the prompts above to summarize your most recent milestone activity and work.
+⚙️ Overview
+
+This week, I focused on building the foundation of my ReadyQuest C++ application.
+I created the initial project structure and separate classes for ReadyQuest, Household, Lesson, and Scenario. 
+I also implemented a working main menu, an emergency preparedness lesson, an interactive emergency scenario, and household preparedness information.
+
+🌵 Challenges
+
+One of my biggest challenges was understanding how the different classes and functions work together within the program.
+I am addressing this by working through the code step by step, testing each feature, and reviewing how the different parts connect.
+
+🏆 Accomplishments
+
+I improved my understanding of organizing a C++ project using separate header and source files. 
+I also gained experience testing my application, identifying problems, and using GitHub to commit and push my development progress.
+
+🔮 Next Steps
+
+My next priority is adding scoring and progress tracking. 
+I also plan to work on randomized emergency events, achievements, and improving the existing features as I continue developing ReadyQuest.
 
 ### Week 2
 

@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Household Emergency Readiness Coach/Household Emergency Readiness Coach.vcxproj" />
+</Solution>
