@@ -11,7 +11,7 @@ Scenario::Scenario()
 }
 
 // Displays an interactive emergency scenario.
-void Scenario::Display()
+int Scenario::Display()
 {
 	int choice = 0;
 
@@ -41,4 +41,7 @@ void Scenario::Display()
 	{
 		std::cout << "Invalid choice. Please select 1, 2, or 3.\n";
 	}
+
+	// Returns the user's selected answer to ReadyQuest.
+	return choice;
 }

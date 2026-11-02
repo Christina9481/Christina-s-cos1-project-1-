@@ -12,8 +12,8 @@ public:
 	// Creates a new Scenario object
 	Scenario();
 
-	// Displays an emergency scenario and its choices.
-	void Display();
+	// Displays an emergency scenario and returns the user's choice.
+	int Display();
 };
 
 #endif

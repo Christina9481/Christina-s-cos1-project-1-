@@ -36,6 +36,12 @@ void ReadyQuest::Run()
 			// Creates a lesson and displays its safety tips
 			Lesson lesson;
 			lesson.Display();
+			
+
+			// Records the completed lesson.
+			progress.CompleteLesson();
+			
+			progress.AddPoints(10);
 			break;
 		}
 
@@ -43,7 +49,24 @@ void ReadyQuest::Run()
 		{
 			// Creates a scenario and displays the emergency situation.
 			Scenario scenario;
-			scenario.Display();
+			int scenarioChoice = scenario.Display();
+			
+			// Records the completed Scenario.
+			progress.CompleteScenario();
+			
+			// Awards points for the safe decision.
+			if (scenarioChoice == 2)
+			{
+				progress.AddPoints(20);
+				std::cout << "Correct choice! You earned 20 points.\n";
+			} 
+
+			// Deducts points for an unsafe decision.
+			else if (scenarioChoice == 1 || scenarioChoice == 3)
+			{
+				progress.SubtractPoints(5);
+				std::cout << "Incorrect choice! You lose 5 points.\n";
+			}
 			break;
 		}
 		case 3:
@@ -55,7 +78,8 @@ void ReadyQuest::Run()
 		}
 
 		case 4:
-			std::cout << "Progress and Achievements selected.\n";
+			// Displays the user's current progress.
+			progress.DisplayProgress();
 			break;
 
 		case 5:
