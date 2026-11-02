@@ -16,14 +16,15 @@ void ReadyQuest::Run()
 	int choice = 0;
 
 	// Keep showing the menu until the user chooses Exit.
-	while (choice != 5)
+	while (choice != 6)
 	{
 		std::cout << "\n===== ReadyQuest =====\n";
 		std::cout << "1. Emergency Lessons\n";
 		std::cout << "2. Interactive Scenarios\n";
 		std::cout << "3. Household Prepardness information\n";
 		std::cout << "4. Progress and Achievements\n";
-		std::cout << "5. Exit\n";
+		std::cout << "5. Random Emergency Events\n";
+		std::cout << "6 Exit\n";
 		std::cout << " Enter your choice: ";
 
 		std::cin >> choice;
@@ -83,6 +84,11 @@ void ReadyQuest::Run()
 			break;
 
 		case 5:
+			// Displays a randomly selected emergency event.
+			emergencyEvent.DisplayRandomEvent();
+			break;
+
+		case 6:
 			std::cout << "Thank you for using ReadyQuest!\n";
 			break;
 

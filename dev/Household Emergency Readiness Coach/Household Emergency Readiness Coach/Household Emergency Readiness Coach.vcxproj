@@ -139,6 +139,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EmergencyEvent.cpp" />
     <ClCompile Include="Household.cpp" />
     <ClCompile Include="Lesson.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Scenario.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EmergencyEvent.h" />
     <ClInclude Include="Household.h" />
     <ClInclude Include="Lesson.h" />
     <ClInclude Include="ProgressTracker.h" />

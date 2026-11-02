@@ -2,6 +2,7 @@
 #include "ProgressTracker.h"
 #ifndef READYQUEST_H
 #define READYQUEST_H
+#include "EmergencyEvent.h"
 
 // Coordinates the main ReadyQuest application.
 class ReadyQuest
@@ -10,12 +11,16 @@ private:
 	// Tracks points and completed activities.
 	ProgressTracker progress;
 
+	// Handles random emergency events.
+	EmergencyEvent emergencyEvent;
+
 public:
 	// Creates a new ReadyQuest application.
 	ReadyQuest();
 
 	// Starts the application
 	void Run();
+
 };
 
 #endif
