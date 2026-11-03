@@ -36,13 +36,18 @@ void ReadyQuest::Run()
 		{
 			// Creates a lesson and displays its safety tips
 			Lesson lesson;
-			lesson.Display();
+			int lessonScore = lesson.Display();
 			
 
 			// Records the completed lesson.
 			progress.CompleteLesson();
 			
-			progress.AddPoints(10);
+			// Awards 5 points for each correct knowledge check answer.
+			progress.AddPoints(lessonScore * 5);
+			
+			// Displays the points earned.
+			std::cout << "You earned " << lessonScore * 5 << " points!\n";
+
 			break;
 		}
 

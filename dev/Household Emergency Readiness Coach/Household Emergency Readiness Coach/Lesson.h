@@ -12,7 +12,20 @@ public:
 	Lesson();
 
 	// Displays an emergency preparedness lesson.
-	void Display();
+	int Display();
+
+private:
+	// Displays the preparation steps before an outage.
+	void DisplayBeforeOutage();
+
+	// displays safety during an outage.
+	void DisplayDuringOutage();
+
+	// Displays recovery steps aftr an outage.
+	void DisplayAfterOutage();
+
+	// Tests what the user learned.
+	int KnowledgeCheck();
 };
 
 #endif
