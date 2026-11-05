@@ -65,8 +65,8 @@ void ReadyQuest::Run()
 				// Awards points for the safe decision.
 				if (scenarioChoice == 2)
 				{
-					progress.AddPoints(10);
-					std::cout << "You earned 10 points!\n";
+					progress.AddPoints(20);
+					std::cout << "You earned 20 points!\n";
 				}
 
 				// Deducts points for an unsafe decision.
