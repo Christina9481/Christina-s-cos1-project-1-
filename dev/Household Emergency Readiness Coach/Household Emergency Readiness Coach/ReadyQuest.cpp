@@ -53,32 +53,34 @@ void ReadyQuest::Run()
 
 		case 2:
 		{
-			// Creates a scenario and displays the emergency situation.
+			// Creates and displays an emergency scenario.
 			Scenario scenario;
 			int scenarioChoice = scenario.Display();
-			
-			// Records the completed Scenario.
-			progress.CompleteScenario();
-			
-			// Awards points for the safe decision.
-			if (scenarioChoice == 2)
-			{
-				progress.AddPoints(20);
-				std::cout << "Correct choice! You earned 20 points.\n";
-			} 
 
-			// Deducts points for an unsafe decision.
-			else if (scenarioChoice == 1 || scenarioChoice == 3)
+			// Records the completed scenario.
+			if (scenarioChoice >= 1 && scenarioChoice <= 3)
 			{
-				progress.SubtractPoints(5);
-				std::cout << "Incorrect choice! You lose 5 points.\n";
+				progress.CompleteScenario();
+
+				// Awards points for the safe decision.
+				if (scenarioChoice == 2)
+				{
+					progress.AddPoints(10);
+					std::cout << "You earned 10 points!\n";
+				}
+
+				// Deducts points for an unsafe decision.
+				else
+				{
+					progress.SubtractPoints(5);
+					std::cout << "You lost 5 points.\n";
+				}
 			}
 			break;
 		}
 		case 3:
 		{
 			// Creates a household object and displays preparedness information.
-			Household household;
 			household.Display();
 			break;
 		}
