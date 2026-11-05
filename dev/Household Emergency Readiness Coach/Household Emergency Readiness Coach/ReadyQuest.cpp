@@ -27,7 +27,18 @@ void ReadyQuest::Run()
 		std::cout << "6 Exit\n";
 		std::cout << " Enter your choice: ";
 
-		std::cin >> choice;
+		// Validate the main menu selection.
+		while (!(std::cin >> choice) || choice < 1 || choice > 6)
+		{
+			std::cout << "Invalid choice. Please enter a number from 1 to 6: ";
+
+			// Clears invalid input so the user can try again.
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+		}
+
+		// Clears any extra characters after a valid menu selection.
+		std::cin.ignore(1000, '\n');
 
 		// Responds to the selected menu option.
 		switch (choice)
