@@ -37,9 +37,12 @@ void ProgressTracker::SubtractPoints(int points)
 
 
 // Increases the completed lesson count.
-void ProgressTracker::CompleteLesson(int score)
+void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 {
 	completedLessons++;
+
+	// Save the name of the completed lesson.
+	completedLessonNames.push_back(lessonName);
 
 	// Award the First Lesson achievement.
 	if (completedLessons >= 1 && !firstLessonEarned)
@@ -59,9 +62,12 @@ void ProgressTracker::CompleteLesson(int score)
 }
 
 // Tracks completed scenarios and correct safety decisions.
-void ProgressTracker::CompleteScenario(bool correct)
+void ProgressTracker::CompleteScenario(bool correct, std::string scenarioName)
 {
 	completedScenarios++;
+
+	// Save the name of the completed scenario.
+	completedScenarioNames.push_back(scenarioName);
 
 	// Count the decision only when the user chooses the safe answer.
 	if (correct)
@@ -93,6 +99,22 @@ void ProgressTracker::DisplayProgress()
 	std::cout << "Total Points: " << totalPoints << "\n";
 	std::cout << "Completed Lessons: " << completedLessons << "\n";
 	std::cout << "Completed Scenarios: " << completedScenarios << "\n";
+
+	// Display the names of completed lessons.
+	std::cout << "\n===== Completed Lessons =====\n";
+
+	for (std::string lessonName : completedLessonNames)
+	{
+		std::cout << "- " << lessonName << "\n";
+	}
+
+	// Display the names of completed scenarios.
+	std::cout << "\n===== Completed Scenarios =====\n";
+
+	for (std::string scenarioName : completedScenarioNames)
+	{
+		std::cout << "- " << scenarioName << "\n";
+	}
 
 	std::cout << "\n===== Achievements =====\n";
 

@@ -2,6 +2,8 @@
 
 #ifndef PROGRESSTRACKER_H
 #define PROGRESSTRACKER_H
+#include <string>
+#include <vector>
 
 class ProgressTracker
 {
@@ -17,6 +19,10 @@ private:
 	bool safeDecisionEarned;
 	bool safetyExpertEarned;
 
+	// Stores the names of completed lessons and scenarios.
+	std::vector<std::string> completedLessonNames;
+	std::vector<std::string> completedScenarioNames;
+
 
 public:
 	ProgressTracker();
@@ -26,8 +32,8 @@ public:
 	// Subtracts points when the user makes an unsafe decision.
 	void SubtractPoints(int points);
 
-	void CompleteLesson(int score);
-	void CompleteScenario(bool correct);
+	void CompleteLesson(int score, std::string lessonName);
+	void CompleteScenario(bool correct, std::string scenarioName);
 
 	void DisplayProgress();
 };
