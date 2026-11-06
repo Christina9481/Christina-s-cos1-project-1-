@@ -51,7 +51,7 @@ void ReadyQuest::Run()
 			
 
 			// Records the completed lesson.
-			progress.CompleteLesson();
+			progress.CompleteLesson(lessonScore);
 			
 			// Awards 5 points for each correct knowledge check answer.
 			progress.AddPoints(lessonScore * 5);
@@ -71,7 +71,7 @@ void ReadyQuest::Run()
 			// Records the completed scenario.
 			if (scenarioChoice >= 1 && scenarioChoice <= 3)
 			{
-				progress.CompleteScenario();
+				progress.CompleteScenario(scenarioChoice == 2);
 
 				// Awards points for the safe decision.
 				if (scenarioChoice == 2)
