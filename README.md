@@ -67,7 +67,27 @@ I also plan to work on randomized emergency events, achievements, and improving 
 
 ### Week 2
 
-My next stand up will go here...
+ Overview
+This week, I continued developing ReadyQuest, my Household Emergency Readiness Coach. 
+I improved emergency lessons, interactive scenarios, household preparedness tracking,
+progress tracking, scoring, achievements, and random emergency events.
+I also worked on connecting the classes so the different systems communicate and update information.
+
+Challenges
+One of my biggest challenges was understanding how the different classes work together, 
+especially connecting ProgressTracker to lessons and scenarios.
+I also encountered method declaration and implementation errors.
+I addressed these by checking my header and source files, correcting mismatches, and testing after each change.
+
+Accomplishments
+I improved my understanding of object-oriented programming and class communication.
+I successfully implemented progress tracking, scoring, completed lesson and scenario tracking, and achievements.
+I also improved input validation and household preparedness tracking.
+
+Next Steps
+I plan to continue testing ReadyQuest, improve the user experience, and review my existing code organization.
+I also want to strengthen the connection between Household and ProgressTracker. 
+Save and Load functionality will remain on my development plan for Week 4.
 
 ### Week 3
 

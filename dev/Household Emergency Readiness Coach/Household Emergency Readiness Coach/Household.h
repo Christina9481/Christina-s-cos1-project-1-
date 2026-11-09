@@ -3,14 +3,29 @@
 
 #ifndef HOUSEHOLD_H 
 #define HOUSEHOLD_H
-class Household // defines my first class 
-{
-public: // makes the constructor accessible outside the class
 
-    Household(); // Creates a new Household object
+class Household
+{
+private:
+    // Stores whether each emergency supply is available.
+    bool hasFlashlights;
+    bool hasFoodAndWater;
+    bool hasBlankets;
+    bool hasEmergencyContacts;
+    bool hasRadio;
+
+    // Tracks whether the checklist has been completed.
+    bool checklistCompleted;
+
+public:
+    // Creates a new Household object.
+    Household();
 
     // Displays household preparedness information.
     void Display();
+
+    // Calculates how many preparations are completed.
+    int CalculatePreparedness();
 };
 
 #endif
