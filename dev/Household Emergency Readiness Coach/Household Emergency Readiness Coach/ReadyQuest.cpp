@@ -30,7 +30,7 @@ void ReadyQuest::Run()
 		std::cout << "4. Progress and Achievements\n";
 		std::cout << "5. Random Emergency Events\n";
 		std::cout << "6 Exit\n";
-		std::cout << " Enter your choice: ";
+		
 
 		// Gets a valid menu selection from the user.
 		choice = Input::GetNumber("Enter your choice: ", 1, 6);

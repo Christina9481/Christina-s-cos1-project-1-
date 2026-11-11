@@ -1,5 +1,7 @@
 #include "Lesson.h"
 #include <iostream>
+#include "Input.h"
+
 
 
 //Defines the Lesson constructor.
@@ -58,15 +60,9 @@ int Lesson::KnowledgeCheck()
     std::cout << "1. Candles\n";
     std::cout << "2. Flashlights\n";
     std::cout << "3. Matches\n";
-    std::cout << "Choose 1-3: ";
+    
 
-    while (!(std::cin >> answer) || answer < 1 || answer > 3)
-    {
-        std::cout << "Invalid input. Please enter 1, 2, or 3: ";
-
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber("Choose 1-3: ", 1, 3);
 
     if (answer == 2)
     {
@@ -83,15 +79,9 @@ int Lesson::KnowledgeCheck()
     std::cout << "1. Inside the garage\n";
     std::cout << "2. Inside the house\n";
     std::cout << "3. Outdoors, at least 20 feet from the home\n";
-    std::cout << "Choose 1-3: ";
+   
 
-    while (!(std::cin >> answer) || answer < 1 || answer > 3)
-    {
-        std::cout << "Invalid input. Please enter 1, 2, or 3: ";
-
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber("Choose 1-3: ", 1, 3);
 
     if (answer == 3)
     {
@@ -108,14 +98,9 @@ int Lesson::KnowledgeCheck()
     std::cout << "1. Keep them closed as much as possible\n";
     std::cout << "2. Open them every few minutes\n";
     std::cout << "3. Leave them open\n";
-    std::cout << "Choose 1-3: ";
+   
 
-    while (!(std::cin >> answer) || answer < 1 || answer > 3)
-    {
-        std::cout << "Invalid input. Please enter 1, 2, or 3: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber("Choose 1-3: ", 1, 3);
 
     if (answer == 1)
     {
