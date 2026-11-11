@@ -7,7 +7,11 @@
 // Defines the ReadyQuest constructor.
 ReadyQuest::ReadyQuest()
 {
+	// Loads previously saved progress when ReadyQuest starts.
+	progress.LoadProgress();
 
+	// Loads previously saved household information.
+	household.LoadHousehold();
 }
 
 // Defines the function that starts the application
@@ -107,6 +111,12 @@ void ReadyQuest::Run()
 			break;
 
 		case 6:
+			// Saves the user's progress before exiting.
+			progress.SaveProgress();
+
+			// Saves the household preparedness answers.
+			household.SaveHousehold();
+
 			std::cout << "Thank you for using ReadyQuest!\n";
 			break;
 

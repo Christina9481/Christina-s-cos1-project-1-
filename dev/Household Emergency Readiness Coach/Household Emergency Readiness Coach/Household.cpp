@@ -1,5 +1,6 @@
 #include "Household.h" // Connects this source file to the class declaration.
 #include <iostream>
+#include <fstream>
 
 // Creates a new Household object.
 // All preparations start as unavailable.
@@ -172,4 +173,54 @@ void Household::Display()
 
     // Remembering that the checklist has been completed
     checklistCompleted = true;
+}
+
+// Saves the household preparedness answers to a file.
+void Household::SaveHousehold()
+{
+    std::ofstream outFile("ReadyQuestHousehold.txt");
+
+    if (!outFile)
+    {
+        std::cout << "Unable to save household information.\n";
+        return;
+    }
+
+    outFile << hasFlashlights << "\n";
+    outFile << hasFoodAndWater << "\n";
+    outFile << hasBlankets << "\n";
+    outFile << hasEmergencyContacts << "\n";
+    outFile << hasRadio << "\n";
+    outFile << checklistCompleted << "\n";
+
+    outFile.close();
+
+    std::cout << "Household information saved successfully!\n";
+}
+
+// Loads previously saved household preparedness answers.
+void Household::LoadHousehold()
+{
+    std::ifstream inFile("ReadyQuestHousehold.txt");
+
+    if (!inFile)
+    {
+        std::cout << "No saved household information found.\n";
+        return;
+    }
+
+    if (!(inFile >> hasFlashlights
+        >> hasFoodAndWater
+        >> hasBlankets
+        >> hasEmergencyContacts
+        >> hasRadio
+        >> checklistCompleted))
+    {
+        std::cout << "Unable to read household information.\n";
+        return;
+    }
+
+    inFile.close();
+
+    std::cout << "Household information loaded successfully!\n";
 }

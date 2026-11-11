@@ -1,5 +1,7 @@
 #include "ProgressTracker.h"
 #include <iostream>
+#include <fstream>
+#include <limits>
 
 // Set all progress values to zero when ReadyQuest starts.
 ProgressTracker::ProgressTracker()
@@ -143,4 +145,116 @@ void ProgressTracker::DisplayProgress()
 	{
 		std::cout << "No achievements earned yet.\n";
 	}
+}
+
+// saves the user's progress to a file.
+// Saves the user's progress to a file.
+void ProgressTracker::SaveProgress()
+{
+	std::ofstream outFile("ReadyQuestProgress.txt");
+
+	if (!outFile)
+	{
+		std::cout << "Unable to save progress.\n";
+		return;
+	}
+
+	outFile << totalPoints << "\n";
+	outFile << completedLessons << "\n";
+	outFile << completedScenarios << "\n";
+	outFile << correctScenarioDecisions << "\n";
+
+	outFile << firstLessonEarned << "\n";
+	outFile << knowledgeChampionEarned << "\n";
+	outFile << safeDecisionEarned << "\n";
+	outFile << safetyExpertEarned << "\n";
+
+	outFile << completedLessonNames.size() << "\n";
+
+	for (std::string lessonName : completedLessonNames)
+	{
+		outFile << lessonName << "\n";
+	}
+
+	outFile << completedScenarioNames.size() << "\n";
+
+	for (std::string scenarioName : completedScenarioNames)
+	{
+		outFile << scenarioName << "\n";
+	}
+
+	outFile.close();
+
+	std::cout << "Progress saved successfully!\n";
+}
+
+// Loads the user's previously saved progress.
+void ProgressTracker::LoadProgress()
+{
+	std::ifstream inFile("ReadyQuestProgress.txt");
+
+	if (!inFile)
+	{
+		std::cout << "No saved progress found. Starting fresh.\n";
+		return;
+	}
+
+	int lessonNameCount = 0;
+
+	// Load points, completion counts, and achievements.
+	if (!(inFile >> totalPoints
+		>> completedLessons
+		>> completedScenarios
+		>> correctScenarioDecisions
+		>> firstLessonEarned
+		>> knowledgeChampionEarned
+		>> safeDecisionEarned
+		>> safetyExpertEarned
+		>> lessonNameCount))
+	{
+		std::cout << "Unable to read saved progress.\n";
+		return;
+	}
+
+	if (lessonNameCount < 0)
+	{
+		std::cout << "Invalid saved progress.\n";
+		return;
+	}
+
+	// Clear old lesson names before loading saved names.
+	completedLessonNames.clear();
+
+	inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	for (int i = 0; i < lessonNameCount; i++)
+	{
+		std::string lessonName;
+		std::getline(inFile, lessonName);
+		completedLessonNames.push_back(lessonName);
+	}
+
+	int scenarioNameCount = 0;
+
+	if (!(inFile >> scenarioNameCount) || scenarioNameCount < 0)
+	{
+		std::cout << "Unable to read saved scenarios.\n";
+		return;
+	}
+
+	// Clear old scenario names before loading saved names.
+	completedScenarioNames.clear();
+
+	inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	for (int i = 0; i < scenarioNameCount; i++)
+	{
+		std::string scenarioName;
+		std::getline(inFile, scenarioName);
+		completedScenarioNames.push_back(scenarioName);
+	}
+
+	inFile.close();
+
+	std::cout << "Progress loaded successfully!\n";
 }

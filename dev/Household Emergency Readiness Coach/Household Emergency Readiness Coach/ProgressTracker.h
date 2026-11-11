@@ -36,6 +36,10 @@ public:
 	void CompleteScenario(bool correct, std::string scenarioName);
 
 	void DisplayProgress();
+
+	// Saves and loads the user's progress.
+	void SaveProgress();
+	void LoadProgress();
 };
 
 #endif

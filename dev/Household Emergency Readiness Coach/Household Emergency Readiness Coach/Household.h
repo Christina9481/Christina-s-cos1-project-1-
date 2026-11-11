@@ -26,6 +26,12 @@ public:
 
     // Calculates how many preparations are completed.
     int CalculatePreparedness();
+
+    // Saves household preparedness answers.
+    void SaveHousehold();
+
+    // Loads previously saved household answers.
+    void LoadHousehold();
 };
 
 #endif
