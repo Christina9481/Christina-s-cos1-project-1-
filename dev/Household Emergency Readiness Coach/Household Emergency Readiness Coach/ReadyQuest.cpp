@@ -3,6 +3,7 @@
 #include "Lesson.h"
 #include "Scenario.h"
 #include "Household.h"
+#include "Input.h"
 
 // Defines the ReadyQuest constructor.
 ReadyQuest::ReadyQuest()
@@ -31,18 +32,8 @@ void ReadyQuest::Run()
 		std::cout << "6 Exit\n";
 		std::cout << " Enter your choice: ";
 
-		// Validate the main menu selection.
-		while (!(std::cin >> choice) || choice < 1 || choice > 6)
-		{
-			std::cout << "Invalid choice. Please enter a number from 1 to 6: ";
-
-			// Clears invalid input so the user can try again.
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-		}
-
-		// Clears any extra characters after a valid menu selection.
-		std::cin.ignore(1000, '\n');
+		// Gets a valid menu selection from the user.
+		choice = Input::GetNumber("Enter your choice: ", 1, 6);
 
 		// Responds to the selected menu option.
 		switch (choice)
