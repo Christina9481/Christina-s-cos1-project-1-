@@ -50,6 +50,59 @@ int Household::CalculatePreparedness()
     return totalPrepared;
 }
 
+// Displays missing supplies and a household readiness summary.
+void Household::DisplayPreparednessFeedback()
+{
+    int totalPrepared = CalculatePreparedness();
+
+    std::cout << "\n===== HOUSEHOLD READINESS SUMMARY =====\n";
+    std::cout << "Preparedness items completed: "
+        << totalPrepared << " out of 5.\n";
+
+    if (totalPrepared < 5)
+    {
+        std::cout << "\nItems that still need attention:\n";
+    }
+
+    if (!hasFlashlights)
+    {
+        std::cout << "- Flashlights and extra batteries\n";
+    }
+
+    if (!hasFoodAndWater)
+    {
+        std::cout << "- Drinking water and nonperishable food\n";
+    }
+
+    if (!hasBlankets)
+    {
+        std::cout << "- Extra blankets\n";
+    }
+
+    if (!hasEmergencyContacts)
+    {
+        std::cout << "- Emergency contact information\n";
+    }
+
+    if (!hasRadio)
+    {
+        std::cout << "- Battery-powered radio\n";
+    }
+
+    if (totalPrepared == 5)
+    {
+        std::cout << "\nExcellent! Your household has all five preparations.\n";
+    }
+    else if (totalPrepared >= 3)
+    {
+        std::cout << "\nGood progress! Your household has some important preparations.\n";
+    }
+    else
+    {
+        std::cout << "\nYour household needs more emergency preparations.\n";
+    }
+}
+
 // Checks whether the hosuehold has flashlights.
 bool Household::HasFlashlights()
 {
@@ -141,10 +194,8 @@ void Household::Display()
 
     hasRadio = (answer == 1);
 
-    // Display the preparedness score.
-    std::cout << "\n===== PREPAREDNESS RESULTS =====\n";
-    std::cout << "Preparations completed: "
-        << CalculatePreparedness() << " out of 5.\n";
+    // Display the preparedness score and readiness feedback.
+    DisplayPreparednessFeedback();
 
     // Remember that the checklist has been completed.
     checklistCompleted = true;

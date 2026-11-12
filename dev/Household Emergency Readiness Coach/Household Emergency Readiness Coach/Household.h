@@ -27,6 +27,8 @@ public:
     // Calculates how many preparations are completed.
     int CalculatePreparedness();
 
+    // Displays missing supplies and a household readiness summary.
+    void DisplayPreparednessFeedback();
     
     // Checks whether the hosuehold has flashlights
     bool HasFlashlights();
