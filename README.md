@@ -1,24 +1,3 @@
-# 🚀 Welcome to Project & Portfolio!
-
-This repository will be used to keep track of research and development conducted in this class. Follow the instructions below to get started.
-cos
-### Getting Started
-
-**1.** Review the [About](./docs/01_about/README.md) README and all of the links it provides.
-
-**2.** Review the documentation and [Getting Started](./docs/02_getting_started/README.md) steps in this repository's docs folder.
-
-**3.** Attend the first Live Lecture to see a live setup demo. If you are unable to attend, make sure to watch the archive.
-
-### Next Steps...
-
-After completing the above steps, feel free to begin updating this readme where indicated below. Remember to update this document each week to receive proper credit for the weekly Milestone assignment.
-
-<br>
-
-> ❗️ &nbsp; Now that you have read to this point, go ahead and delete this sentence and everything above it.
-
-<br>
 
 # Project & Portfolio 1
 
@@ -91,7 +70,21 @@ Save and Load functionality will remain on my development plan for Week 4.
 
 ### Week 3
 
-Stay tuned, this stand up is coming soon...
+Overview
+
+This week, I focused on improving and refining ReadyQuest. I added reusable input validation, interactive random emergency events, and meaningful pointer usage connecting the EmergencyEvent and Household classes. I also verified that household information and progress could be saved and loaded.
+
+Challenges
+
+One challenge was understanding how pointers allow classes to communicate. I also encountered compiler errors while updating class declarations and constructors. I resolved these issues by reviewing the header and source files and testing after each change.
+
+Accomplishments
+
+I successfully implemented a pointer connecting EmergencyEvent to Household. The program can now check whether the household has flashlights during a power outage event. Both Yes and No responses were tested successfully. My latest build reported zero errors.
+
+Next Steps
+
+I plan to continue testing the application, review the project documentation, and prepare for final submission.
 
 ### Week 4
 
