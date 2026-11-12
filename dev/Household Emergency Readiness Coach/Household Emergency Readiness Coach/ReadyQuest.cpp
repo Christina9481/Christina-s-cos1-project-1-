@@ -21,6 +21,18 @@ void ReadyQuest::Run()
 {
 	int choice = 0;
 
+	// Displays the ReadyQuest welcome logo when the program starts.
+	std::cout << "\n";
+	std::cout << "=====================================\n";
+	std::cout << "  ____                 _         _   \n";
+	std::cout << " |  _ \\ ___  __ _  __| |_   _  / \\  \n";
+	std::cout << " | |_) / _ \\/ _` |/ _` | | | |/ _ \\ \n";
+	std::cout << " |  _ <  __/ (_| | (_| | |_| / ___ \\\n";
+	std::cout << " |_| \\_\\___|\\__,_|\\__,_|\\__, /_/   \\\n";
+	std::cout << "                         |___/       \n";
+	std::cout << "       HOUSEHOLD READINESS COACH     \n";
+	std::cout << "=====================================\n\n";
+
 	// Keep showing the menu until the user chooses Exit.
 	while (choice != 6)
 	{
