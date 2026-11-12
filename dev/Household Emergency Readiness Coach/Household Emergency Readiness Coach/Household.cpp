@@ -1,4 +1,6 @@
-#include "Household.h" // Connects this source file to the class declaration.
+
+#include "Household.h"
+#include "Input.h"
 #include <iostream>
 #include <fstream>
 
@@ -6,11 +8,11 @@
 // All preparations start as unavailable.
 Household::Household()
 {
-	hasFlashlights = false;
-	hasFoodAndWater = false;
-	hasBlankets = false;
-	hasEmergencyContacts = false;
-	hasRadio = false;
+    hasFlashlights = false;
+    hasFoodAndWater = false;
+    hasBlankets = false;
+    hasEmergencyContacts = false;
+    hasRadio = false;
 
     checklistCompleted = false;
 }
@@ -74,20 +76,12 @@ void Household::Display()
         std::cout << "\nPreparations completed: "
             << CalculatePreparedness() << " out of 5.\n";
 
-        int updateChoice = 0;
-
-        std::cout << "\nWould you like to update your checklist?\n";
-        std::cout << "1. Yes\n";
-        std::cout << "2. No\n";
-        std::cout << "Enter your choice: ";
-
-        while (!(std::cin >> updateChoice)
-            || updateChoice < 1 || updateChoice > 2)
-        {
-            std::cout << "Invalid input. Enter 1 for Yes or 2 for No: ";
-            std::cin.clear();
-            std::cin.ignore(1000, '\n');
-        }
+        // Gets a validated choice about updating the checklist.
+        int updateChoice = Input::GetNumber(
+            "\nWould you like to update your checklist?\n"
+            "1. Yes\n"
+            "2. No\n"
+            "Enter your choice: ", 1, 2);
 
         // Return to the menu if the user does not want to update.
         if (updateChoice == 2)
@@ -102,67 +96,42 @@ void Household::Display()
     std::cout << "Answer 1 for Yes or 2 for No.\n";
 
     // Check for flashlights and extra batteries.
-    std::cout << "\n1. Do you have flashlights and extra batteries?\n";
-    std::cout << "1. Yes\n2. No\n";
-
-    while (!(std::cin >> answer) || answer < 1 || answer > 2)
-    {
-        std::cout << "Invalid input. Enter 1 for Yes or 2 for No: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber(
+        "\n1. Do you have flashlights and extra batteries?\n"
+        "1. Yes\n2. No\n"
+        "Enter your choice: ", 1, 2);
 
     hasFlashlights = (answer == 1);
 
     // Check for drinking water and nonperishable food.
-    std::cout << "\n2. Do you have drinking water and nonperishable food?\n";
-    std::cout << "1. Yes\n2. No\n";
-
-    while (!(std::cin >> answer) || answer < 1 || answer > 2)
-    {
-        std::cout << "Invalid input. Enter 1 for Yes or 2 for No: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber(
+        "\n2. Do you have drinking water and nonperishable food?\n"
+        "1. Yes\n2. No\n"
+        "Enter your choice: ", 1, 2);
 
     hasFoodAndWater = (answer == 1);
 
     // Check for extra blankets.
-    std::cout << "\n3. Do you have extra blankets?\n";
-    std::cout << "1. Yes\n2. No\n";
-
-    while (!(std::cin >> answer) || answer < 1 || answer > 2)
-    {
-        std::cout << "Invalid input. Enter 1 for Yes or 2 for No: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber(
+        "\n3. Do you have extra blankets?\n"
+        "1. Yes\n2. No\n"
+        "Enter your choice: ", 1, 2);
 
     hasBlankets = (answer == 1);
 
     // Check for emergency contact information.
-    std::cout << "\n4. Do you have emergency contacts easily accessible?\n";
-    std::cout << "1. Yes\n2. No\n";
-
-    while (!(std::cin >> answer) || answer < 1 || answer > 2)
-    {
-        std::cout << "Invalid input. Enter 1 for Yes or 2 for No: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber(
+        "\n4. Do you have emergency contacts easily accessible?\n"
+        "1. Yes\n2. No\n"
+        "Enter your choice: ", 1, 2);
 
     hasEmergencyContacts = (answer == 1);
 
     // Check for a battery-powered radio.
-    std::cout << "\n5. Do you have a battery-powered radio?\n";
-    std::cout << "1. Yes\n2. No\n";
-
-    while (!(std::cin >> answer) || answer < 1 || answer > 2)
-    {
-        std::cout << "Invalid input. Enter 1 for Yes or 2 for No: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber(
+        "\n5. Do you have a battery-powered radio?\n"
+        "1. Yes\n2. No\n"
+        "Enter your choice: ", 1, 2);
 
     hasRadio = (answer == 1);
 
@@ -171,7 +140,7 @@ void Household::Display()
     std::cout << "Preparations completed: "
         << CalculatePreparedness() << " out of 5.\n";
 
-    // Remembering that the checklist has been completed
+    // Remember that the checklist has been completed.
     checklistCompleted = true;
 }
 
