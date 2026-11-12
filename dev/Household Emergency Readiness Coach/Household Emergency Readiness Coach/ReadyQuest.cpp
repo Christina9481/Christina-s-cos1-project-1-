@@ -33,6 +33,25 @@ void ReadyQuest::Run()
 	std::cout << "       HOUSEHOLD READINESS COACH     \n";
 	std::cout << "=====================================\n\n";
 
+	// Displays the ReadyQuest introduction once when the program starts.
+	std::cout << "Welcome to ReadyQuest: Your Household Emergency Readiness Coach!\n\n";
+
+	std::cout << "Being prepared for an emergency can help protect you, your family, and your home.\n";
+	std::cout << "ReadyQuest is designed to help households learn how to recognize potential dangers,\n";
+	std::cout << "make safer decisions, and prepare for unexpected emergencies.\n\n";
+
+	std::cout << "With ReadyQuest, you can:\n";
+	std::cout << "- Explore emergency preparedness lessons and learn what to do before, during, and after an emergency.\n";
+	std::cout << "- Practice interactive scenarios that challenge you to make safe decisions.\n";
+	std::cout << "- Review your household's preparedness and identify supplies and plans that need attention.\n";
+	std::cout << "- Experience random emergency events to test your knowledge and readiness.\n";
+	std::cout << "- Track your progress, earn points, and unlock achievements as you learn.\n\n";
+
+	std::cout << "You don't have to know everything to get started.\n";
+	std::cout << "ReadyQuest will help you build your knowledge one step at a time.\n\n";
+
+	std::cout << "The main menu is next. Choose an option to begin your preparedness journey!\n\n";
+
 	// Keep showing the menu until the user chooses Exit.
 	while (choice != 6)
 	{
