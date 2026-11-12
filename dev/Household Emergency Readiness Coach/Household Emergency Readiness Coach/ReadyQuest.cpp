@@ -7,6 +7,7 @@
 
 // Defines the ReadyQuest constructor.
 ReadyQuest::ReadyQuest()
+	: emergencyEvent(&household)
 {
 	// Loads previously saved progress when ReadyQuest starts.
 	progress.LoadProgress();

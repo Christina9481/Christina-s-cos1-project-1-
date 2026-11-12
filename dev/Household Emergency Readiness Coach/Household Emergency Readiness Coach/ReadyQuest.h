@@ -5,6 +5,7 @@
 #include "EmergencyEvent.h"
 #include "Household.h"
 
+
 // Coordinates the main ReadyQuest application.
 class ReadyQuest
 {
@@ -12,11 +13,12 @@ private:
 	// Tracks points and completed activities.
 	ProgressTracker progress;
 
+	// Stores household preparedness answers.
+	Household household;
+
 	// Handles random emergency events.
 	EmergencyEvent emergencyEvent;
 
-	// Stores household preparedness answers.
-	Household household;
 
 public:
 	// Creates a new ReadyQuest application.

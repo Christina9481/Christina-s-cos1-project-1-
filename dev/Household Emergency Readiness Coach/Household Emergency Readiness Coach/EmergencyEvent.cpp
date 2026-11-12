@@ -3,7 +3,14 @@
 #include <cstdlib>
 #include <ctime>
 #include "Input.h"
+#include "Household.h"
 
+
+// Stores a pointer to the existing Household object.
+EmergencyEvent::EmergencyEvent(Household* householdPointer)
+{
+    household = householdPointer;
+}
 
 // Selects and displays a random emergency event.
 void EmergencyEvent::DisplayRandomEvent()
@@ -20,6 +27,19 @@ void EmergencyEvent::DisplayRandomEvent()
     {
         std::cout << "POWER OUTAGE\n";
         std::cout << "The electricity in your home suddenly goes out.\n";
+
+        // Checks the household flashlight information.
+        if (household != nullptr)
+        {
+            if (household->HasFlashlights())
+            {
+                std::cout << "Your checklist confirms you have flashlights.\n";
+            }
+            else
+            {
+                std::cout << "Your checklist does not confirm that you have flashlights.\n";
+            }
+        }
 
         std::cout << "\nWhat should you do first?\n";
         std::cout << "1. Light candles and leave them unattended.\n";

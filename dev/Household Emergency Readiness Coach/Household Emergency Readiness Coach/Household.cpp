@@ -50,6 +50,12 @@ int Household::CalculatePreparedness()
     return totalPrepared;
 }
 
+// Checks whether the hosuehold has flashlights.
+bool Household::HasFlashlights()
+{
+    return hasFlashlights;
+}
+
 // Displays the household preparedness checklist.
 void Household::Display()
 {
