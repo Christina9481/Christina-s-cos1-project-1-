@@ -10,13 +10,56 @@
 EmergencyEvent::EmergencyEvent(Household* householdPointer)
 {
     household = householdPointer;
-}
 
+    // Starts the event counter at zero.
+    eventsUsed = 0;
+
+    // Loads the five emergency event numbers.
+    for (int i = 0; i < 5; i++)
+    {
+        eventOrder[i] = i + 1;
+    }
+
+    // Randomizes the first cycle.
+    ShuffleEvents();
+}
+// Randomizes the order of the five emergency events.
+void EmergencyEvent::ShuffleEvents()
+{
+    // Checks each position in the event array.
+    for (int i = 4; i > 0; i--)
+    {
+        // Selects a random position from the remaining events.
+        int randomIndex = rand() % (i + 1);
+
+        // Temporarily stores the current event.
+        int temp = eventOrder[i];
+
+        // Moves the randomly selected event into this position.
+        eventOrder[i] = eventOrder[randomIndex];
+
+        // Moves the original event into the random position.
+        eventOrder[randomIndex] = temp;
+    }
+}
 // Selects and displays a random emergency event.
 void EmergencyEvent::DisplayRandomEvent()
 {
-	// Generate a random number from 1 through 5
-	int eventNumber = (rand() % 5) + 1;
+    // Checks whether all five events have been used.
+    if (eventsUsed == 5)
+    {
+        // Resets the counter for a new cycle.
+        eventsUsed = 0;
+
+        // Randomizes the next cycle.
+        ShuffleEvents();
+    }
+
+    // Selects the next event in the randomized order.
+    int eventNumber = eventOrder[eventsUsed];
+
+    // Records that this event has been used.
+    eventsUsed++;
 
 	std::cout << "\n--- Random Emergency Event ---\n";
 

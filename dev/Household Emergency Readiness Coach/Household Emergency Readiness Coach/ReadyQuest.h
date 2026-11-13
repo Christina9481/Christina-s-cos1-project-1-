@@ -10,6 +10,12 @@
 class ReadyQuest
 {
 private:
+
+	// Menu option numbers.
+	static const int MIN_MENU_CHOICE = 1;
+	static const int MAX_MENU_CHOICE = 6;
+	static const int EXIT_MENU_CHOICE = 6;
+	
 	// Tracks points and completed activities.
 	ProgressTracker progress;
 
