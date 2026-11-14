@@ -1,5 +1,7 @@
 #include "Scenario.h"
 #include <iostream>
+#include "Input.h"
+
 
 // Defines the Scenario constructor.
 Scenario::Scenario()
@@ -10,8 +12,6 @@ Scenario::Scenario()
 // Displays an interactive emergency scenario.
 int Scenario::Display()
 {
-    int choice = 0;
-
     std::cout << "\n===== Emergency Scenario =====\n";
     std::cout << "A storm knocks out the power at night.\n";
     std::cout << "Your household needs light. What should you do first?\n";
@@ -19,15 +19,12 @@ int Scenario::Display()
     std::cout << "\n1. Light candles and leave them unattended.\n";
     std::cout << "2. Get flashlights and check on everyone.\n";
     std::cout << "3. Open the refrigerator to look for food.\n";
-    std::cout << "Enter your choice (1-3): ";
 
-    // Validate the user's answer.
-    while (!(std::cin >> choice) || choice < 1 || choice > 3)
-    {
-        std::cout << "Invalid choice. Please enter 1, 2, or 3: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    // Gets a validated choice using the named constants.
+    int choice = Input::GetNumber(
+        "Enter your choice (1-3): ",
+        MIN_SCENARIO_CHOICE,
+        MAX_SCENARIO_CHOICE);
 
     // Explain why the selected answer is safe or unsafe.
     if (choice == 1)

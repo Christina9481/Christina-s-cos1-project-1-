@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Household Emergency Readiness Coach/Household Emergency Readiness Coach.vcxproj" />
+  <Project Path="Household Emergency Readiness Coach/Household Emergency Readiness Coach.vcxproj" Id="bef83d39-d070-4de7-b520-f3d299199e53" />
 </Solution>

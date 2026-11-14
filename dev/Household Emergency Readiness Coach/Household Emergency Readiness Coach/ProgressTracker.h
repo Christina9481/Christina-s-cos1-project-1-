@@ -8,6 +8,13 @@
 class ProgressTracker
 {
 private:
+
+	// Achievement requirements.
+	static const int FIRST_LESSON_REQUIREMENT = 1;
+	static const int KNOWLEDGE_CHAMPION_REQUIREMENT = 3;
+	static const int FIRST_SAFE_DECISION_REQUIREMENT = 1;
+	static const int SAFETY_EXPERT_REQUIREMENT = 3;
+
 	int totalPoints;
 	int completedLessons;
 	int completedScenarios;
@@ -36,6 +43,10 @@ public:
 	void CompleteScenario(bool correct, std::string scenarioName);
 
 	void DisplayProgress();
+
+	// Saves and loads the user's progress.
+	void SaveProgress();
+	void LoadProgress();
 };
 
 #endif

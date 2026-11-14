@@ -1,5 +1,7 @@
 #include "Lesson.h"
 #include <iostream>
+#include "Input.h"
+
 
 
 //Defines the Lesson constructor.
@@ -58,17 +60,11 @@ int Lesson::KnowledgeCheck()
     std::cout << "1. Candles\n";
     std::cout << "2. Flashlights\n";
     std::cout << "3. Matches\n";
-    std::cout << "Choose 1-3: ";
+    
 
-    while (!(std::cin >> answer) || answer < 1 || answer > 3)
-    {
-        std::cout << "Invalid input. Please enter 1, 2, or 3: ";
+    answer = Input::GetNumber("Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
 
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
-
-    if (answer == 2)
+    if (answer == QUESTION_ONE_ANSWER)
     {
         std::cout << "Correct! Flashlights reduce fire risk.\n";
         score++;
@@ -83,17 +79,11 @@ int Lesson::KnowledgeCheck()
     std::cout << "1. Inside the garage\n";
     std::cout << "2. Inside the house\n";
     std::cout << "3. Outdoors, at least 20 feet from the home\n";
-    std::cout << "Choose 1-3: ";
+   
 
-    while (!(std::cin >> answer) || answer < 1 || answer > 3)
-    {
-        std::cout << "Invalid input. Please enter 1, 2, or 3: ";
+    answer = Input::GetNumber("Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
 
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
-
-    if (answer == 3)
+    if (answer == QUESTION_TWO_ANSWER)
     {
         std::cout << "Correct! This helps prevent carbon monoxide poisoning.\n";
         score++;
@@ -108,16 +98,11 @@ int Lesson::KnowledgeCheck()
     std::cout << "1. Keep them closed as much as possible\n";
     std::cout << "2. Open them every few minutes\n";
     std::cout << "3. Leave them open\n";
-    std::cout << "Choose 1-3: ";
+   
 
-    while (!(std::cin >> answer) || answer < 1 || answer > 3)
-    {
-        std::cout << "Invalid input. Please enter 1, 2, or 3: ";
-        std::cin.clear();
-        std::cin.ignore(1000, '\n');
-    }
+    answer = Input::GetNumber("Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
 
-    if (answer == 1)
+    if (answer == QUESTION_THREE_ANSWER)
     {
         std::cout << "Correct! Keeping the doors closed helps preserve food.\n";
         score++;
@@ -128,7 +113,7 @@ int Lesson::KnowledgeCheck()
     }
 
     // Display the final knowledge check score.
-    std::cout << "\nYour knowledge check score: " << score << " out of 3.\n";
+    std::cout << "\nYour knowledge check score: " << score << " out of " << TOTAL_QUESTIONS << ".\n";
 
     // Returns the number of correct answers.
     return score;
