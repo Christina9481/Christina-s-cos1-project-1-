@@ -62,9 +62,9 @@ int Lesson::KnowledgeCheck()
     std::cout << "3. Matches\n";
     
 
-    answer = Input::GetNumber("Choose 1-3: ", 1, 3);
+    answer = Input::GetNumber("Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
 
-    if (answer == 2)
+    if (answer == QUESTION_ONE_ANSWER)
     {
         std::cout << "Correct! Flashlights reduce fire risk.\n";
         score++;
@@ -81,9 +81,9 @@ int Lesson::KnowledgeCheck()
     std::cout << "3. Outdoors, at least 20 feet from the home\n";
    
 
-    answer = Input::GetNumber("Choose 1-3: ", 1, 3);
+    answer = Input::GetNumber("Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
 
-    if (answer == 3)
+    if (answer == QUESTION_TWO_ANSWER)
     {
         std::cout << "Correct! This helps prevent carbon monoxide poisoning.\n";
         score++;
@@ -100,9 +100,9 @@ int Lesson::KnowledgeCheck()
     std::cout << "3. Leave them open\n";
    
 
-    answer = Input::GetNumber("Choose 1-3: ", 1, 3);
+    answer = Input::GetNumber("Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
 
-    if (answer == 1)
+    if (answer == QUESTION_THREE_ANSWER)
     {
         std::cout << "Correct! Keeping the doors closed helps preserve food.\n";
         score++;
@@ -113,7 +113,7 @@ int Lesson::KnowledgeCheck()
     }
 
     // Display the final knowledge check score.
-    std::cout << "\nYour knowledge check score: " << score << " out of 3.\n";
+    std::cout << "\nYour knowledge check score: " << score << " out of " << TOTAL_QUESTIONS << ".\n";
 
     // Returns the number of correct answers.
     return score;

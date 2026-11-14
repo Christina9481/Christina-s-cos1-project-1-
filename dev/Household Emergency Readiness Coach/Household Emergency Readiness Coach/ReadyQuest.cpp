@@ -53,7 +53,7 @@ void ReadyQuest::Run()
 	std::cout << "The main menu is next. Choose an option to begin your preparedness journey!\n\n";
 
 	// Keep showing the menu until the user chooses Exit.
-	while (choice != 6)
+	while (choice != EXIT_MENU_CHOICE)
 	{
 		std::cout << "\n===== ReadyQuest =====\n";
 		std::cout << "1. Emergency Lessons\n";
@@ -65,7 +65,7 @@ void ReadyQuest::Run()
 		
 
 		// Gets a valid menu selection from the user.
-		choice = Input::GetNumber("Enter your choice: ", 1, 6);
+		choice = Input::GetNumber("Enter your choice: ", MIN_MENU_CHOICE, MAX_MENU_CHOICE);
 
 		// Responds to the selected menu option.
 		switch (choice)
@@ -81,10 +81,10 @@ void ReadyQuest::Run()
 			progress.CompleteLesson(lessonScore, "Power Outage");
 			
 			// Awards 5 points for each correct knowledge check answer.
-			progress.AddPoints(lessonScore * 5);
+			progress.AddPoints(lessonScore * LESSON_POINTS_PER_ANSWER);
 			
 			// Displays the points earned.
-			std::cout << "You earned " << lessonScore * 5 << " points!\n";
+			std::cout << "You earned " << LESSON_POINTS_PER_ANSWER << " points!\n";
 
 			break;
 		}
@@ -103,15 +103,15 @@ void ReadyQuest::Run()
 				// Awards points for the safe decision.
 				if (scenarioChoice == 2)
 				{
-					progress.AddPoints(20);
-					std::cout << "You earned 20 points!\n";
+					progress.AddPoints(SCENARIO_SAFE_POINTS);
+					std::cout << "You earned " << SCENARIO_SAFE_POINTS << " points!\n";
 				}
 
 				// Deducts points for an unsafe decision.
 				else
 				{
-					progress.SubtractPoints(5);
-					std::cout << "You lost 5 points.\n";
+					progress.SubtractPoints(SCENARIO_UNSAFE_PENALTY);
+					std::cout << "You lost " << SCENARIO_UNSAFE_PENALTY << " points.\n";
 				}
 			}
 			break;
@@ -133,7 +133,7 @@ void ReadyQuest::Run()
 			emergencyEvent.DisplayRandomEvent();
 			break;
 
-		case 6:
+		case EXIT_MENU_CHOICE:
 			// Saves the user's progress before exiting.
 			progress.SaveProgress();
 

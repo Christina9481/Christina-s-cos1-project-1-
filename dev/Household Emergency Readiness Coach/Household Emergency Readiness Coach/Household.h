@@ -7,6 +7,13 @@
 class Household
 {
 private:
+    // Number of preparedness items on the checklist.
+    static const int TOTAL_PREPARATIONS = 5;
+
+    // Checklist answer choices.
+    static const int YES_CHOICE = 1;
+    static const int NO_CHOICE = 2;
+
     // Stores whether each emergency supply is available.
     bool hasFlashlights;
     bool hasFoodAndWater;

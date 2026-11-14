@@ -57,9 +57,9 @@ void Household::DisplayPreparednessFeedback()
 
     std::cout << "\n===== HOUSEHOLD READINESS SUMMARY =====\n";
     std::cout << "Preparedness items completed: "
-        << totalPrepared << " out of 5.\n";
+        << totalPrepared << " out of " << TOTAL_PREPARATIONS << ".\n";
 
-    if (totalPrepared < 5)
+    if (totalPrepared < TOTAL_PREPARATIONS)
     {
         std::cout << "\nItems that still need attention:\n";
     }
@@ -89,7 +89,7 @@ void Household::DisplayPreparednessFeedback()
         std::cout << "- Battery-powered radio\n";
     }
 
-    if (totalPrepared == 5)
+    if (totalPrepared == TOTAL_PREPARATIONS)
     {
         std::cout << "\nExcellent! Your household has all five preparations.\n";
     }
@@ -140,10 +140,10 @@ void Household::Display()
             "\nWould you like to update your checklist?\n"
             "1. Yes\n"
             "2. No\n"
-            "Enter your choice: ", 1, 2);
+            "Enter your choice: ", YES_CHOICE, NO_CHOICE);
 
         // Return to the menu if the user does not want to update.
-        if (updateChoice == 2)
+        if (updateChoice == NO_CHOICE)
         {
             return;
         }
@@ -158,41 +158,41 @@ void Household::Display()
     answer = Input::GetNumber(
         "\n1. Do you have flashlights and extra batteries?\n"
         "1. Yes\n2. No\n"
-        "Enter your choice: ", 1, 2);
+        "Enter your choice: ", YES_CHOICE, NO_CHOICE);
 
-    hasFlashlights = (answer == 1);
+    hasFlashlights = (answer == YES_CHOICE);
 
     // Check for drinking water and nonperishable food.
     answer = Input::GetNumber(
         "\n2. Do you have drinking water and nonperishable food?\n"
         "1. Yes\n2. No\n"
-        "Enter your choice: ", 1, 2);
+        "Enter your choice: ", YES_CHOICE, NO_CHOICE);
 
-    hasFoodAndWater = (answer == 1);
+    hasFoodAndWater = (answer == YES_CHOICE);
 
     // Check for extra blankets.
     answer = Input::GetNumber(
         "\n3. Do you have extra blankets?\n"
         "1. Yes\n2. No\n"
-        "Enter your choice: ", 1, 2);
+        "Enter your choice: ", YES_CHOICE, NO_CHOICE);
 
-    hasBlankets = (answer == 1);
+    hasBlankets = (answer == YES_CHOICE);
 
     // Check for emergency contact information.
     answer = Input::GetNumber(
         "\n4. Do you have emergency contacts easily accessible?\n"
         "1. Yes\n2. No\n"
-        "Enter your choice: ", 1, 2);
+        "Enter your choice: ", YES_CHOICE, NO_CHOICE);
 
-    hasEmergencyContacts = (answer == 1);
+    hasEmergencyContacts = (answer == YES_CHOICE);
 
     // Check for a battery-powered radio.
     answer = Input::GetNumber(
         "\n5. Do you have a battery-powered radio?\n"
         "1. Yes\n2. No\n"
-        "Enter your choice: ", 1, 2);
+        "Enter your choice: ", YES_CHOICE, NO_CHOICE);
 
-    hasRadio = (answer == 1);
+    hasRadio = (answer == YES_CHOICE);
 
     // Display the preparedness score and readiness feedback.
     DisplayPreparednessFeedback();

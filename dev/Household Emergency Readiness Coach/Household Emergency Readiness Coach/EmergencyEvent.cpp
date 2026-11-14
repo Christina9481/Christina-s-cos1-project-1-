@@ -1,10 +1,10 @@
+
 #include "EmergencyEvent.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include "Input.h"
 #include "Household.h"
-
 
 // Stores a pointer to the existing Household object.
 EmergencyEvent::EmergencyEvent(Household* householdPointer)
@@ -14,20 +14,21 @@ EmergencyEvent::EmergencyEvent(Household* householdPointer)
     // Starts the event counter at zero.
     eventsUsed = 0;
 
-    // Loads the five emergency event numbers.
-    for (int i = 0; i < 5; i++)
+    // Loads the emergency event numbers.
+    for (int i = 0; i < TOTAL_EVENTS; i++)
     {
-        eventOrder[i] = i + 1;
+        eventOrder[i] = i + FIRST_EVENT_NUMBER;
     }
 
     // Randomizes the first cycle.
     ShuffleEvents();
 }
-// Randomizes the order of the five emergency events.
+
+// Randomizes the order of the emergency events.
 void EmergencyEvent::ShuffleEvents()
 {
     // Checks each position in the event array.
-    for (int i = 4; i > 0; i--)
+    for (int i = TOTAL_EVENTS - 1; i > 0; i--)
     {
         // Selects a random position from the remaining events.
         int randomIndex = rand() % (i + 1);
@@ -42,11 +43,12 @@ void EmergencyEvent::ShuffleEvents()
         eventOrder[randomIndex] = temp;
     }
 }
+
 // Selects and displays a random emergency event.
 void EmergencyEvent::DisplayRandomEvent()
 {
-    // Checks whether all five events have been used.
-    if (eventsUsed == 5)
+    // Checks whether all events have been used.
+    if (eventsUsed == TOTAL_EVENTS)
     {
         // Resets the counter for a new cycle.
         eventsUsed = 0;
@@ -61,12 +63,12 @@ void EmergencyEvent::DisplayRandomEvent()
     // Records that this event has been used.
     eventsUsed++;
 
-	std::cout << "\n--- Random Emergency Event ---\n";
+    std::cout << "\n--- Random Emergency Event ---\n";
 
-	// Displays the emergency based on the random number.
-	switch (eventNumber)
-	{
-    case 1:
+    // Displays the emergency based on the random number.
+    switch (eventNumber)
+    {
+    case POWER_OUTAGE_EVENT:
     {
         std::cout << "POWER OUTAGE\n";
         std::cout << "The electricity in your home suddenly goes out.\n";
@@ -90,7 +92,7 @@ void EmergencyEvent::DisplayRandomEvent()
         std::cout << "3. Open the refrigerator.\n";
 
         int choice = Input::GetNumber(
-            "Enter your choice (1-3): ", 1, 3);
+            "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
         if (choice == 2)
         {
@@ -104,8 +106,8 @@ void EmergencyEvent::DisplayRandomEvent()
 
         break;
     }
-	
-    case 2:
+
+    case TORNADO_EVENT:
     {
         std::cout << "TORNADO\n";
         std::cout << "A tornado warning has been issued for your area.\n";
@@ -116,7 +118,7 @@ void EmergencyEvent::DisplayRandomEvent()
         std::cout << "3. Stand near a window to watch for danger.\n";
 
         int choice = Input::GetNumber(
-            "Enter your choice (1-3): ", 1, 3);
+            "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
         if (choice == 2)
         {
@@ -132,7 +134,7 @@ void EmergencyEvent::DisplayRandomEvent()
         break;
     }
 
-    case 3:
+    case WATER_INTERRUPTION_EVENT:
     {
         std::cout << "WATER SUPPLY INTERRUPTION\n";
         std::cout << "Your home suddenly loses access to running water.\n";
@@ -143,7 +145,7 @@ void EmergencyEvent::DisplayRandomEvent()
         std::cout << "3. Assume the water will return immediately.\n";
 
         int choice = Input::GetNumber(
-            "Enter your choice (1-3): ", 1, 3);
+            "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
         if (choice == 1)
         {
@@ -158,7 +160,7 @@ void EmergencyEvent::DisplayRandomEvent()
         break;
     }
 
-    case 4:
+    case HOUSE_FIRE_EVENT:
     {
         std::cout << "HOUSE FIRE\n";
         std::cout << "Smoke is detected inside your home.\n";
@@ -169,7 +171,7 @@ void EmergencyEvent::DisplayRandomEvent()
         std::cout << "3. Hide inside a closet.\n";
 
         int choice = Input::GetNumber(
-            "Enter your choice (1-3): ", 1, 3);
+            "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
         if (choice == 2)
         {
@@ -184,7 +186,7 @@ void EmergencyEvent::DisplayRandomEvent()
         break;
     }
 
-    case 5:
+    case WINTER_STORM_EVENT:
     {
         std::cout << "WINTER STORM\n";
         std::cout << "A winter storm is approaching your area.\n";
@@ -195,7 +197,7 @@ void EmergencyEvent::DisplayRandomEvent()
         std::cout << "3. Travel during the storm to buy supplies.\n";
 
         int choice = Input::GetNumber(
-            "Enter your choice (1-3): ", 1, 3);
+            "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
         if (choice == 2)
         {
@@ -209,6 +211,5 @@ void EmergencyEvent::DisplayRandomEvent()
 
         break;
     }
-
-	}
+    }
 }

@@ -12,9 +12,6 @@ Scenario::Scenario()
 // Displays an interactive emergency scenario.
 int Scenario::Display()
 {
-    // Gets a validated choice from the user (1-3).
-    int choice = Input::GetNumber("Enter your choice (1-3): ", 1, 3);
-
     std::cout << "\n===== Emergency Scenario =====\n";
     std::cout << "A storm knocks out the power at night.\n";
     std::cout << "Your household needs light. What should you do first?\n";
@@ -22,9 +19,12 @@ int Scenario::Display()
     std::cout << "\n1. Light candles and leave them unattended.\n";
     std::cout << "2. Get flashlights and check on everyone.\n";
     std::cout << "3. Open the refrigerator to look for food.\n";
-    std::cout << "Enter your choice (1-3): ";
 
-   
+    // Gets a validated choice using the named constants.
+    int choice = Input::GetNumber(
+        "Enter your choice (1-3): ",
+        MIN_SCENARIO_CHOICE,
+        MAX_SCENARIO_CHOICE);
 
     // Explain why the selected answer is safe or unsafe.
     if (choice == 1)

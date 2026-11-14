@@ -47,7 +47,8 @@ void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 	completedLessonNames.push_back(lessonName);
 
 	// Award the First Lesson achievement.
-	if (completedLessons >= 1 && !firstLessonEarned)
+	if (completedLessons >= FIRST_LESSON_REQUIREMENT && !firstLessonEarned)
+
 	{
 		firstLessonEarned = true;
 		std::cout << "\nACHIEVEMENT UNLOCKED: First Lesson!\n";
@@ -55,7 +56,7 @@ void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 	}
 
 	// Award Knowledge Champion for answering all 3 questions correctly.
-	if (score == 3 && !knowledgeChampionEarned)
+	if (score == KNOWLEDGE_CHAMPION_REQUIREMENT && !knowledgeChampionEarned)
 	{
 		knowledgeChampionEarned = true;
 		std::cout << "\nACHIEVEMENT UNLOCKED: Knowledge Champion!\n";
@@ -78,7 +79,7 @@ void ProgressTracker::CompleteScenario(bool correct, std::string scenarioName)
 	}
 
 	// Award the Safe Decision achievement.
-	if (correctScenarioDecisions >= 1 && !safeDecisionEarned)
+	if (correctScenarioDecisions >= FIRST_SAFE_DECISION_REQUIREMENT && !safeDecisionEarned)
 	{
 		safeDecisionEarned = true;
 		std::cout << "\nACHIEVEMENT UNLOCKED: Safe Decision!\n";
@@ -86,7 +87,7 @@ void ProgressTracker::CompleteScenario(bool correct, std::string scenarioName)
 	}
 
 	// Award the Safety Expert achievement.
-	if (correctScenarioDecisions >= 3 && !safetyExpertEarned)
+	if (correctScenarioDecisions >= SAFETY_EXPERT_REQUIREMENT && !safetyExpertEarned)
 	{
 		safetyExpertEarned = true;
 		std::cout << "\nACHIEVEMENT UNLOCKED: Safety Expert!\n";
