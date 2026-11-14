@@ -91,7 +91,25 @@ Save and Load functionality will remain on my development plan for Week 4.
 
 ### Week 3
 
-Stay tuned, this stand up is coming soon...
+Overview
+
+This week, I continued developing ReadyQuest by connecting its systems and improving how the different classes work together.
+
+Improvements
+
+I improved household preparedness tracking, progress tracking, and random emergency events. I also reviewed the existing code and replaced repeated magic numbers with named constants to make the program easier to maintain.
+
+Challenges
+
+One challenge was resolving code issues while connecting the different systems. I addressed these problems by reviewing my code, testing changes, and making sure the program continued to build with zero errors.
+
+Accomplishments
+
+I improved my understanding of how classes communicate and how to refactor existing code. I also strengthened my ability to test, debug, and manage changes through Git.
+
+Next Stepxs
+
+I plan to complete and test Save and Load functionality, continue refining ReadyQuest, and prepare the final project for Week 4.
 
 ### Week 4
 
