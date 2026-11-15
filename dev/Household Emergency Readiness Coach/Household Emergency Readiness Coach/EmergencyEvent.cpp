@@ -134,31 +134,34 @@ void EmergencyEvent::DisplayRandomEvent()
         break;
     }
 
-    case WATER_INTERRUPTION_EVENT:
+    case HURRICANE_EVENT:
     {
-        std::cout << "WATER SUPPLY INTERRUPTION\n";
-        std::cout << "Your home suddenly loses access to running water.\n";
+        std::cout << "HURRICANE\n";
+        std::cout << "A hurricane warning has been issued for your area.\n";
 
-        std::cout << "\nWhat should you do first?\n";
-        std::cout << "1. Use bottled water stored for emergencies.\n";
-        std::cout << "2. Drink water from an unknown outdoor source.\n";
-        std::cout << "3. Assume the water will return immediately.\n";
+        std::cout << "\nWhat should you do?\n";
+        std::cout << "1. Ignore the warnings and wait for the storm.\n";
+        std::cout << "2. Follow local instructions and evacuate if ordered.\n";
+        std::cout << "3. Go outside to watch the storm.\n";
 
         int choice = Input::GetNumber(
             "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
-        if (choice == 1)
+        if (choice == 2)
         {
-            std::cout << "\nCorrect! Use your stored emergency water supply.\n";
+            std::cout << "\nCorrect! Follow instructions from local officials.\n";
+            std::cout << "Evacuate when ordered and use designated evacuation routes.\n";
         }
         else
         {
             std::cout << "\nThat is not the safest choice.\n";
-            std::cout << "Use stored safe drinking water when available.\n";
+            std::cout << "Follow local emergency instructions.\n";
+            std::cout << "If you are not evacuating, shelter indoors away from windows.\n";
         }
 
         break;
     }
+    
 
     case HOUSE_FIRE_EVENT:
     {
