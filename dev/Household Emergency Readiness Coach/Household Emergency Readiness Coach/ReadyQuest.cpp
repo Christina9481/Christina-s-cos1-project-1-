@@ -4,6 +4,7 @@
 #include "Scenario.h"
 #include "Household.h"
 #include "Input.h"
+#include "ConsoleColor.h"
 
 // Defines the ReadyQuest constructor.
 ReadyQuest::ReadyQuest()
@@ -22,6 +23,8 @@ void ReadyQuest::Run()
 	int choice = 0;
 
 	// Displays the ReadyQuest welcome logo when the program starts.
+	ConsoleColor::SetColor(ConsoleColor::RED);
+
 	std::cout << "\n";
 	std::cout << "=====================================\n";
 	std::cout << "  ____                 _         _   \n";
@@ -32,6 +35,8 @@ void ReadyQuest::Run()
 	std::cout << "                         |___/       \n";
 	std::cout << "       HOUSEHOLD READINESS COACH     \n";
 	std::cout << "=====================================\n\n";
+
+	ConsoleColor::ResetColor();
 
 	// Displays the ReadyQuest introduction once when the program starts.
 	std::cout << "Welcome to ReadyQuest: Your Household Emergency Readiness Coach!\n\n";
@@ -55,14 +60,20 @@ void ReadyQuest::Run()
 	// Keep showing the menu until the user chooses Exit.
 	while (choice != EXIT_MENU_CHOICE)
 	{
+		// Displays the main menu in yellow.
+		ConsoleColor::SetColor(ConsoleColor::YELLOW);
+
 		std::cout << "\n===== ReadyQuest =====\n";
 		std::cout << "1. Emergency Lessons\n";
 		std::cout << "2. Interactive Scenarios\n";
-		std::cout << "3. Household Prepardness information\n";
+		std::cout << "3. Household Preparedness information\n";
 		std::cout << "4. Progress and Achievements\n";
 		std::cout << "5. Random Emergency Events\n";
-		std::cout << "6 Exit\n";
+		std::cout << "6. Exit\n";
 		
+		// Restores the default text color.
+		ConsoleColor::ResetColor();
+
 
 		// Gets a valid menu selection from the user.
 		choice = Input::GetNumber("Enter your choice: ", MIN_MENU_CHOICE, MAX_MENU_CHOICE);
@@ -83,9 +94,10 @@ void ReadyQuest::Run()
 			// Awards 5 points for each correct knowledge check answer.
 			progress.AddPoints(lessonScore * LESSON_POINTS_PER_ANSWER);
 			
-			// Displays the points earned.
-			std::cout << "You earned " << LESSON_POINTS_PER_ANSWER << " points!\n";
-
+			// Displays the points earned in green.
+			ConsoleColor::SetColor(ConsoleColor::GREEN);
+			std::cout << "You earned " << lessonScore * LESSON_POINTS_PER_ANSWER << " points!\n";
+			ConsoleColor::ResetColor();
 			break;
 		}
 
@@ -104,14 +116,20 @@ void ReadyQuest::Run()
 				if (scenarioChoice == 2)
 				{
 					progress.AddPoints(SCENARIO_SAFE_POINTS);
+					// Displays earned points in green.
+					ConsoleColor::SetColor(ConsoleColor::GREEN);
 					std::cout << "You earned " << SCENARIO_SAFE_POINTS << " points!\n";
+					ConsoleColor::ResetColor();
 				}
 
 				// Deducts points for an unsafe decision.
 				else
 				{
 					progress.SubtractPoints(SCENARIO_UNSAFE_PENALTY);
+					// Displays lost points in red.
+					ConsoleColor::SetColor(ConsoleColor::RED);
 					std::cout << "You lost " << SCENARIO_UNSAFE_PENALTY << " points.\n";
+					ConsoleColor::ResetColor();
 				}
 			}
 			break;

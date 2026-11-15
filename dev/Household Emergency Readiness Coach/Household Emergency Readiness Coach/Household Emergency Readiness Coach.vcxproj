@@ -139,6 +139,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleColor.cpp" />
     <ClCompile Include="EmergencyEvent.cpp" />
     <ClCompile Include="Household.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="Scenario.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleColor.h" />
     <ClInclude Include="EmergencyEvent.h" />
     <ClInclude Include="Household.h" />
     <ClInclude Include="Input.h" />
