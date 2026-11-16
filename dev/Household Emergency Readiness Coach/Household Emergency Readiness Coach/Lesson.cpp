@@ -255,10 +255,11 @@ int Lesson::Display()
     std::cout << "1. Power Outage\n";
     std::cout << "2. Tornado Safety\n";
     std::cout << "3. Hurricane Safety\n";
+    std::cout << "4. House Fire Safety\n";
 
     // Gets the user's lesson selection.
     lessonChoice = Input::GetNumber(
-        "Choose a lesson (1-3): ",
+        "Choose a lesson (1-4): ",
         MIN_LESSON_CHOICE,
         MAX_LESSON_CHOICE);
 
@@ -293,7 +294,7 @@ int Lesson::Display()
     }
 
     // Displays the Hurricane Safety lesson.
-    else
+    else if (lessonChoice == 3)
     {
         lessonName = "Hurricane Safety";
 
@@ -303,120 +304,253 @@ int Lesson::Display()
 
         return score;
     }
-}
 
-    // Displays the Hurricane Safety lesson.
-    int Lesson::DisplayHurricaneLesson()
+    // Displays the House Fire Safety lesson.
+    else
     {
-        int answer = 0;
-        int score = 0;
+        lessonName = "House Fire Safety";
 
-        std::cout << "\n===== HURRICANE SAFETY LESSON =====\n";
+        int score = DisplayHouseFireLesson();
 
-        // Introduces hurricanes and explains how to recognize them.
-        std::cout << "\nHurricanes are powerful tropical storms that form over warm ocean water.\n";
-        std::cout << "They can bring strong winds, heavy rain, flooding, and dangerous storm surges.\n";
-        std::cout << "Hurricane conditions may include dark skies, strong winds, heavy rainfall, and rising water.\n";
-        std::cout << "Weather alerts help people know when a hurricane may threaten their area.\n";
+        std::cout << "\nYou have completed the House Fire Safety lesson!\n";
 
-        // Displays preparation steps before a hurricane.
-        std::cout << "\n===== BEFORE A HURRICANE =====\n";
-        std::cout << "1. Monitor weather forecasts and emergency alerts.\n";
-        std::cout << "2. Prepare an emergency kit with food, water, medications, and supplies.\n";
-        std::cout << "3. Make a household communication and evacuation plan.\n";
-        std::cout << "4. Know your area's evacuation routes and shelter locations.\n";
-        std::cout << "5. Bring outdoor furniture and loose items inside when it is safe.\n";
-        std::cout << "6. Protect important documents in a waterproof container.\n";
-        std::cout << "7. Follow evacuation instructions from local officials.\n";
-
-        // Displays safety steps during a hurricane.
-        std::cout << "\n===== DURING A HURRICANE =====\n";
-        std::cout << "1. Stay indoors and away from windows and glass doors.\n";
-        std::cout << "2. Move to a small interior room on the lowest safe floor.\n";
-        std::cout << "3. Keep listening to official weather and emergency updates.\n";
-        std::cout << "4. Do not go outside during the storm's eye; dangerous winds may return.\n";
-        std::cout << "5. Never walk or drive through floodwater.\n";
-        std::cout << "6. Use flashlights instead of candles if the power goes out.\n";
-
-        // Displays safety steps after a hurricane.
-        std::cout << "\n===== AFTER A HURRICANE =====\n";
-        std::cout << "1. Wait for officials to say it is safe before returning home.\n";
-        std::cout << "2. Stay away from floodwater and downed power lines.\n";
-        std::cout << "3. Avoid damaged buildings and report dangerous conditions.\n";
-        std::cout << "4. Use safe drinking water and follow local health advisories.\n";
-        std::cout << "5. Check household members and neighbors when it is safe.\n";
-        std::cout << "6. Take photos of property damage for insurance records when safe.\n";
-
-        // Tests the user's understanding of hurricane safety.
-        std::cout << "\n===== HURRICANE KNOWLEDGE CHECK =====\n";
-
-        // Question 1
-        std::cout << "\n1. What should you do when local officials order an evacuation?\n";
-        std::cout << "1. Ignore the order and stay home.\n";
-        std::cout << "2. Follow the evacuation instructions and leave safely.\n";
-        std::cout << "3. Wait until floodwater reaches your home.\n";
-
-        answer = Input::GetNumber(
-            "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
-
-        if (answer == HURRICANE_QUESTION_ONE_ANSWER)
-        {
-            std::cout << "Correct! Follow evacuation instructions from local officials.\n";
-            score++;
-        }
-        else
-        {
-            std::cout << "Incorrect. Follow evacuation instructions and leave safely.\n";
-        }
-
-        // Question 2
-        std::cout << "\n2. Where should you stay during a hurricane if you are sheltering at home?\n";
-        std::cout << "1. Near windows to watch the storm.\n";
-        std::cout << "2. Outside under a covered porch.\n";
-        std::cout << "3. In a small interior room away from windows.\n";
-
-        answer = Input::GetNumber(
-            "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
-
-        if (answer == HURRICANE_QUESTION_TWO_ANSWER)
-        {
-            std::cout << "Correct! An interior room away from windows is safer.\n";
-            score++;
-        }
-        else
-        {
-            std::cout << "Incorrect. Stay in a small interior room away from windows.\n";
-        }
-
-        // Question 3
-        std::cout << "\n3. What should you avoid after a hurricane?\n";
-        std::cout << "1. Walking or driving through floodwater.\n";
-        std::cout << "2. Listening to emergency updates.\n";
-        std::cout << "3. Checking on family members when it is safe.\n";
-
-        answer = Input::GetNumber(
-            "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
-
-        if (answer == HURRICANE_QUESTION_THREE_ANSWER)
-        {
-            std::cout << "Correct! Floodwater can hide dangerous hazards.\n";
-            score++;
-        }
-        else
-        {
-            std::cout << "Incorrect. Never walk or drive through floodwater.\n";
-        }
-
-        // Displays the final knowledge check score.
-        std::cout << "\nYour knowledge check score: "
-            << score << " out of " << TOTAL_QUESTIONS << ".\n";
-
-        // Provides an official resource for additional hurricane safety information.
-        std::cout << "\n===== WANT TO LEARN MORE? =====\n";
-        std::cout << "Visit the National Weather Service - Hurricane Safety.\n";
-        std::cout << "Website: https://www.weather.gov/safety/hurricane\n";
-
-        // Returns the number of correct answers.
         return score;
     }
+}
+
+
+     // Displays the Hurricane Safety lesson.
+     int Lesson::DisplayHurricaneLesson()
+     {
+         int answer = 0;
+         int score = 0;
+
+         std::cout << "\n===== HURRICANE SAFETY LESSON =====\n";
+
+         // Introduces hurricanes and explains how to recognize them.
+         std::cout << "\nHurricanes are powerful tropical storms that form over warm ocean water.\n";
+         std::cout << "They can bring strong winds, heavy rain, flooding, and dangerous storm surges.\n";
+         std::cout << "Hurricane conditions may include dark skies, strong winds, heavy rainfall, and rising water.\n";
+         std::cout << "Weather alerts help people know when a hurricane may threaten their area.\n";
+
+         // Displays preparation steps before a hurricane.
+         std::cout << "\n===== BEFORE A HURRICANE =====\n";
+         std::cout << "1. Monitor weather forecasts and emergency alerts.\n";
+         std::cout << "2. Prepare an emergency kit with food, water, medications, and supplies.\n";
+         std::cout << "3. Make a household communication and evacuation plan.\n";
+         std::cout << "4. Know your area's evacuation routes and shelter locations.\n";
+         std::cout << "5. Bring outdoor furniture and loose items inside when it is safe.\n";
+         std::cout << "6. Protect important documents in a waterproof container.\n";
+         std::cout << "7. Follow evacuation instructions from local officials.\n";
+
+         // Displays safety steps during a hurricane.
+         std::cout << "\n===== DURING A HURRICANE =====\n";
+         std::cout << "1. Stay indoors and away from windows and glass doors.\n";
+         std::cout << "2. Move to a small interior room on the lowest safe floor.\n";
+         std::cout << "3. Keep listening to official weather and emergency updates.\n";
+         std::cout << "4. Do not go outside during the storm's eye; dangerous winds may return.\n";
+         std::cout << "5. Never walk or drive through floodwater.\n";
+         std::cout << "6. Use flashlights instead of candles if the power goes out.\n";
+
+         // Displays safety steps after a hurricane.
+         std::cout << "\n===== AFTER A HURRICANE =====\n";
+         std::cout << "1. Wait for officials to say it is safe before returning home.\n";
+         std::cout << "2. Stay away from floodwater and downed power lines.\n";
+         std::cout << "3. Avoid damaged buildings and report dangerous conditions.\n";
+         std::cout << "4. Use safe drinking water and follow local health advisories.\n";
+         std::cout << "5. Check household members and neighbors when it is safe.\n";
+         std::cout << "6. Take photos of property damage for insurance records when safe.\n";
+
+         // Tests the user's understanding of hurricane safety.
+         std::cout << "\n===== HURRICANE KNOWLEDGE CHECK =====\n";
+
+         // Question 1
+         std::cout << "\n1. What should you do when local officials order an evacuation?\n";
+         std::cout << "1. Ignore the order and stay home.\n";
+         std::cout << "2. Follow the evacuation instructions and leave safely.\n";
+         std::cout << "3. Wait until floodwater reaches your home.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == HURRICANE_QUESTION_ONE_ANSWER)
+         {
+             std::cout << "Correct! Follow evacuation instructions from local officials.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Follow evacuation instructions and leave safely.\n";
+         }
+
+         // Question 2
+         std::cout << "\n2. Where should you stay during a hurricane if you are sheltering at home?\n";
+         std::cout << "1. Near windows to watch the storm.\n";
+         std::cout << "2. Outside under a covered porch.\n";
+         std::cout << "3. In a small interior room away from windows.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == HURRICANE_QUESTION_TWO_ANSWER)
+         {
+             std::cout << "Correct! An interior room away from windows is safer.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Stay in a small interior room away from windows.\n";
+         }
+
+         // Question 3
+         std::cout << "\n3. What should you avoid after a hurricane?\n";
+         std::cout << "1. Walking or driving through floodwater.\n";
+         std::cout << "2. Listening to emergency updates.\n";
+         std::cout << "3. Checking on family members when it is safe.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == HURRICANE_QUESTION_THREE_ANSWER)
+         {
+             std::cout << "Correct! Floodwater can hide dangerous hazards.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Never walk or drive through floodwater.\n";
+         }
+
+         // Displays the final knowledge check score.
+         std::cout << "\nYour knowledge check score: "
+             << score << " out of " << TOTAL_QUESTIONS << ".\n";
+
+         // Provides an official resource for additional hurricane safety information.
+         std::cout << "\n===== WANT TO LEARN MORE? =====\n";
+         std::cout << "Visit the National Weather Service - Hurricane Safety.\n";
+         std::cout << "Website: https://www.weather.gov/safety/hurricane\n";
+
+
+
+         // Returns the number of correct answers.
+         return score;
+     }
+
+     // Displays the House Fire Safety lesson.
+     int Lesson::DisplayHouseFireLesson()
+     {
+         int answer = 0;
+         int score = 0;
+
+         std::cout << "\n===== HOUSE FIRE SAFETY LESSON =====\n";
+
+         // Introduces house fires and explains how to recognize them.
+         std::cout << "\nHouse fires can spread quickly and create dangerous smoke and heat.\n";
+         std::cout << "Common causes include unattended cooking, heating equipment, candles, and electrical problems.\n";
+         std::cout << "Smoke alarms provide an early warning. Smoke, flames, unusual heat, or a burning smell may indicate a fire.\n";
+         std::cout << "Knowing how to prevent fires and escape safely can help protect your household.\n";
+
+         // Displays preparation steps before a house fire.
+         std::cout << "\n===== BEFORE A HOUSE FIRE =====\n";
+         std::cout << "1. Install smoke alarms inside and outside sleeping areas and on every level.\n";
+         std::cout << "2. Test smoke alarms regularly and replace batteries when needed.\n";
+         std::cout << "3. Create a household fire escape plan with two ways out of each room when possible.\n";
+         std::cout << "4. Choose an outdoor meeting place a safe distance from the home.\n";
+         std::cout << "5. Practice fire escape drills with everyone in the household.\n";
+         std::cout << "6. Keep matches and lighters away from children.\n";
+         std::cout << "7. Never leave cooking unattended.\n";
+         std::cout << "8. Keep heaters away from furniture, curtains, and other items that can burn.\n";
+
+         // Displays safety steps during a house fire.
+         std::cout << "\n===== DURING A HOUSE FIRE =====\n";
+         std::cout << "1. Get everyone outside immediately when there is a fire.\n";
+         std::cout << "2. Stay low under smoke while escaping.\n";
+         std::cout << "3. Feel a closed door with the back of your hand before opening it.\n";
+         std::cout << "4. Use another exit if a door feels hot or smoke is coming through it.\n";
+         std::cout << "5. Close doors behind you if possible to slow the spread of fire.\n";
+         std::cout << "6. Call 911 from outside the home.\n";
+         std::cout << "7. Never go back inside a burning building.\n";
+         std::cout << "8. If your clothes catch fire, stop, drop, and roll.\n";
+
+         // Displays safety steps after a house fire.
+         std::cout << "\n===== AFTER A HOUSE FIRE =====\n";
+         std::cout << "1. Stay outside and wait for firefighters to say it is safe to return.\n";
+         std::cout << "2. Get medical help for anyone who is injured or may have inhaled smoke.\n";
+         std::cout << "3. Do not turn utilities back on until authorities say it is safe.\n";
+         std::cout << "4. Contact your insurance company when it is safe to do so.\n";
+         std::cout << "5. Avoid damaged areas and follow instructions from emergency officials.\n";
+         std::cout << "6. Replace smoke alarms that were damaged by the fire.\n";
+
+         // Tests the user's understanding of house fire safety.
+         std::cout << "\n===== HOUSE FIRE KNOWLEDGE CHECK =====\n";
+
+         // Question 1
+         std::cout << "\n1. What should you do when a house fire starts?\n";
+         std::cout << "1. Hide in a closet.\n";
+         std::cout << "2. Get everyone outside immediately.\n";
+         std::cout << "3. Try to collect your belongings.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == HOUSE_FIRE_QUESTION_ONE_ANSWER)
+         {
+             std::cout << "Correct! Getting outside quickly is the priority.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Get everyone outside immediately.\n";
+         }
+
+         // Question 2
+         std::cout << "\n2. What should you do if smoke fills a room while escaping?\n";
+         std::cout << "1. Stay low and crawl under the smoke.\n";
+         std::cout << "2. Stand up and run through the smoke.\n";
+         std::cout << "3. Hide under a bed.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == HOUSE_FIRE_QUESTION_TWO_ANSWER)
+         {
+             std::cout << "Correct! Staying low helps you avoid some of the smoke.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Stay low and crawl under the smoke while escaping.\n";
+         }
+
+         // Question 3
+         std::cout << "\n3. What should you do after escaping a burning home?\n";
+         std::cout << "1. Go back inside for belongings.\n";
+         std::cout << "2. Wait near the building entrance.\n";
+         std::cout << "3. Stay outside and call 911.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == HOUSE_FIRE_QUESTION_THREE_ANSWER)
+         {
+             std::cout << "Correct! Stay outside and call 911.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Stay outside and call 911. Never re-enter the building.\n";
+         }
+
+         // Displays the final knowledge check score.
+         std::cout << "\nYour knowledge check score: "
+             << score << " out of " << TOTAL_QUESTIONS << ".\n";
+
+         // Provides an official resource for additional fire safety information.
+         std::cout << "\n===== WANT TO LEARN MORE? =====\n";
+         std::cout << "Visit the National Fire Protection Association - Home Fire Safety.\n";
+         std::cout << "Website: https://www.nfpa.org/education-and-research/home-fire-safety\n";
+
+         // Returns the number of correct answers.
+         return score;
+     }
 

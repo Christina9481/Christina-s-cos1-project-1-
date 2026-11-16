@@ -40,10 +40,15 @@ private:
 	static const int HURRICANE_QUESTION_ONE_ANSWER = 2;
 	static const int HURRICANE_QUESTION_TWO_ANSWER = 3;
 	static const int HURRICANE_QUESTION_THREE_ANSWER = 1;
+
+	// Correct answers for the House Fire knowledge check.
+	static const int HOUSE_FIRE_QUESTION_ONE_ANSWER = 2;
+	static const int HOUSE_FIRE_QUESTION_TWO_ANSWER = 1;
+	static const int HOUSE_FIRE_QUESTION_THREE_ANSWER = 3;
 	
 	// Emergency lesson menu choices.
 	static const int MIN_LESSON_CHOICE = 1;
-	static const int MAX_LESSON_CHOICE = 3;
+	static const int MAX_LESSON_CHOICE = 4;
 
 	// Displays the Power Outage Lesson section.
 	void DisplayBeforeOutage();
