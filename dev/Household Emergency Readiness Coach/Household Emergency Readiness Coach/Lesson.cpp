@@ -254,10 +254,11 @@ int Lesson::Display()
     std::cout << "\n===== EMERGENCY LESSONS =====\n";
     std::cout << "1. Power Outage\n";
     std::cout << "2. Tornado Safety\n";
+    std::cout << "3. Hurricane Safety\n";
 
     // Gets the user's lesson selection.
     lessonChoice = Input::GetNumber(
-        "Choose a lesson (1-2): ",
+        "Choose a lesson (1-3): ",
         MIN_LESSON_CHOICE,
         MAX_LESSON_CHOICE);
 
@@ -280,7 +281,7 @@ int Lesson::Display()
     }
 
     // Displays the Tornado Safety lesson.
-    else
+    else if (lessonChoice == 2)
     {
         lessonName = "Tornado Safety";
 
@@ -290,4 +291,132 @@ int Lesson::Display()
 
         return score;
     }
+
+    // Displays the Hurricane Safety lesson.
+    else
+    {
+        lessonName = "Hurricane Safety";
+
+        int score = DisplayHurricaneLesson();
+
+        std::cout << "\nYou have completed the Hurricane Safety lesson!\n";
+
+        return score;
+    }
 }
+
+    // Displays the Hurricane Safety lesson.
+    int Lesson::DisplayHurricaneLesson()
+    {
+        int answer = 0;
+        int score = 0;
+
+        std::cout << "\n===== HURRICANE SAFETY LESSON =====\n";
+
+        // Introduces hurricanes and explains how to recognize them.
+        std::cout << "\nHurricanes are powerful tropical storms that form over warm ocean water.\n";
+        std::cout << "They can bring strong winds, heavy rain, flooding, and dangerous storm surges.\n";
+        std::cout << "Hurricane conditions may include dark skies, strong winds, heavy rainfall, and rising water.\n";
+        std::cout << "Weather alerts help people know when a hurricane may threaten their area.\n";
+
+        // Displays preparation steps before a hurricane.
+        std::cout << "\n===== BEFORE A HURRICANE =====\n";
+        std::cout << "1. Monitor weather forecasts and emergency alerts.\n";
+        std::cout << "2. Prepare an emergency kit with food, water, medications, and supplies.\n";
+        std::cout << "3. Make a household communication and evacuation plan.\n";
+        std::cout << "4. Know your area's evacuation routes and shelter locations.\n";
+        std::cout << "5. Bring outdoor furniture and loose items inside when it is safe.\n";
+        std::cout << "6. Protect important documents in a waterproof container.\n";
+        std::cout << "7. Follow evacuation instructions from local officials.\n";
+
+        // Displays safety steps during a hurricane.
+        std::cout << "\n===== DURING A HURRICANE =====\n";
+        std::cout << "1. Stay indoors and away from windows and glass doors.\n";
+        std::cout << "2. Move to a small interior room on the lowest safe floor.\n";
+        std::cout << "3. Keep listening to official weather and emergency updates.\n";
+        std::cout << "4. Do not go outside during the storm's eye; dangerous winds may return.\n";
+        std::cout << "5. Never walk or drive through floodwater.\n";
+        std::cout << "6. Use flashlights instead of candles if the power goes out.\n";
+
+        // Displays safety steps after a hurricane.
+        std::cout << "\n===== AFTER A HURRICANE =====\n";
+        std::cout << "1. Wait for officials to say it is safe before returning home.\n";
+        std::cout << "2. Stay away from floodwater and downed power lines.\n";
+        std::cout << "3. Avoid damaged buildings and report dangerous conditions.\n";
+        std::cout << "4. Use safe drinking water and follow local health advisories.\n";
+        std::cout << "5. Check household members and neighbors when it is safe.\n";
+        std::cout << "6. Take photos of property damage for insurance records when safe.\n";
+
+        // Tests the user's understanding of hurricane safety.
+        std::cout << "\n===== HURRICANE KNOWLEDGE CHECK =====\n";
+
+        // Question 1
+        std::cout << "\n1. What should you do when local officials order an evacuation?\n";
+        std::cout << "1. Ignore the order and stay home.\n";
+        std::cout << "2. Follow the evacuation instructions and leave safely.\n";
+        std::cout << "3. Wait until floodwater reaches your home.\n";
+
+        answer = Input::GetNumber(
+            "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+        if (answer == HURRICANE_QUESTION_ONE_ANSWER)
+        {
+            std::cout << "Correct! Follow evacuation instructions from local officials.\n";
+            score++;
+        }
+        else
+        {
+            std::cout << "Incorrect. Follow evacuation instructions and leave safely.\n";
+        }
+
+        // Question 2
+        std::cout << "\n2. Where should you stay during a hurricane if you are sheltering at home?\n";
+        std::cout << "1. Near windows to watch the storm.\n";
+        std::cout << "2. Outside under a covered porch.\n";
+        std::cout << "3. In a small interior room away from windows.\n";
+
+        answer = Input::GetNumber(
+            "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+        if (answer == HURRICANE_QUESTION_TWO_ANSWER)
+        {
+            std::cout << "Correct! An interior room away from windows is safer.\n";
+            score++;
+        }
+        else
+        {
+            std::cout << "Incorrect. Stay in a small interior room away from windows.\n";
+        }
+
+        // Question 3
+        std::cout << "\n3. What should you avoid after a hurricane?\n";
+        std::cout << "1. Walking or driving through floodwater.\n";
+        std::cout << "2. Listening to emergency updates.\n";
+        std::cout << "3. Checking on family members when it is safe.\n";
+
+        answer = Input::GetNumber(
+            "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+        if (answer == HURRICANE_QUESTION_THREE_ANSWER)
+        {
+            std::cout << "Correct! Floodwater can hide dangerous hazards.\n";
+            score++;
+        }
+        else
+        {
+            std::cout << "Incorrect. Never walk or drive through floodwater.\n";
+        }
+
+        // Displays the final knowledge check score.
+        std::cout << "\nYour knowledge check score: "
+            << score << " out of " << TOTAL_QUESTIONS << ".\n";
+
+        // Provides an official resource for additional hurricane safety information.
+        std::cout << "\n===== WANT TO LEARN MORE? =====\n";
+        std::cout << "Visit the National Weather Service - Hurricane Safety.\n";
+        std::cout << "Website: https://www.weather.gov/safety/hurricane\n";
+
+        // Returns the number of correct answers.
+        return score;
+    }
+

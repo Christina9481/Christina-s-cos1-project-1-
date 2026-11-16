@@ -35,10 +35,15 @@ private:
 	static const int TORNADO_QUESTION_ONE_ANSWER = 2;
 	static const int TORNADO_QUESTION_TWO_ANSWER = 3;
 	static const int TORNADO_QUESTION_THREE_ANSWER = 2;
+
+	// Correct answers for the Hurricane knowledge check.
+	static const int HURRICANE_QUESTION_ONE_ANSWER = 2;
+	static const int HURRICANE_QUESTION_TWO_ANSWER = 3;
+	static const int HURRICANE_QUESTION_THREE_ANSWER = 1;
 	
 	// Emergency lesson menu choices.
 	static const int MIN_LESSON_CHOICE = 1;
-	static const int MAX_LESSON_CHOICE = 2;
+	static const int MAX_LESSON_CHOICE = 3;
 
 	// Displays the Power Outage Lesson section.
 	void DisplayBeforeOutage();
