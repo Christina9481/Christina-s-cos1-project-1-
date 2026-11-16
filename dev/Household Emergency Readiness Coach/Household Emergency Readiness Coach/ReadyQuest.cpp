@@ -89,7 +89,7 @@ void ReadyQuest::Run()
 			
 
 			// Records the completed lesson.
-			progress.CompleteLesson(lessonScore, "Power Outage");
+			progress.CompleteLesson(lessonScore, lesson.GetLessonName());
 			
 			// Awards 5 points for each correct knowledge check answer.
 			progress.AddPoints(lessonScore * LESSON_POINTS_PER_ANSWER);
