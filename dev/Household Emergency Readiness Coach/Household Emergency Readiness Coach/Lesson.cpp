@@ -249,6 +249,7 @@ int Lesson::KnowledgeCheck()
 // Displays the emergency lesson selection menu.
 int Lesson::Display()
 {
+    int score = 0;
     int lessonChoice = 0;
 
     std::cout << "\n===== EMERGENCY LESSONS =====\n";
@@ -256,10 +257,11 @@ int Lesson::Display()
     std::cout << "2. Tornado Safety\n";
     std::cout << "3. Hurricane Safety\n";
     std::cout << "4. House Fire Safety\n";
+    std::cout << "5. Earthquake Safety\n";
 
     // Gets the user's lesson selection.
     lessonChoice = Input::GetNumber(
-        "Choose a lesson (1-4): ",
+        "Choose a lesson (1-5): ",
         MIN_LESSON_CHOICE,
         MAX_LESSON_CHOICE);
 
@@ -274,7 +276,7 @@ int Lesson::Display()
         DisplayDuringOutage();
         DisplayAfterOutage();
 
-        int score = KnowledgeCheck();
+        score = KnowledgeCheck();
 
         std::cout << "\nYou have completed the Power Outage lesson!\n";
 
@@ -286,7 +288,7 @@ int Lesson::Display()
     {
         lessonName = "Tornado Safety";
 
-        int score = DisplayTornadoLesson();
+        score = DisplayTornadoLesson();
 
         std::cout << "\nYou have completed the Tornado Safety lesson!\n";
 
@@ -298,7 +300,7 @@ int Lesson::Display()
     {
         lessonName = "Hurricane Safety";
 
-        int score = DisplayHurricaneLesson();
+        score = DisplayHurricaneLesson();
 
         std::cout << "\nYou have completed the Hurricane Safety lesson!\n";
 
@@ -306,15 +308,15 @@ int Lesson::Display()
     }
 
     // Displays the House Fire Safety lesson.
-    else
+    else if (lessonChoice == 4)
     {
         lessonName = "House Fire Safety";
-
-        int score = DisplayHouseFireLesson();
-
-        std::cout << "\nYou have completed the House Fire Safety lesson!\n";
-
-        return score;
+        score = DisplayHouseFireLesson();
+    }
+    else
+    {
+        lessonName = "Earthquake Safety Preparedness";
+        score = DisplayEarthquakeLesson();
     }
 }
 
@@ -553,4 +555,124 @@ int Lesson::Display()
          // Returns the number of correct answers.
          return score;
      }
+
+     // Displays the Earthquake Safety lesson.
+     int Lesson::DisplayEarthquakeLesson()
+     {
+         int answer = 0;
+         int score = 0;
+
+         std::cout << "\n===== EARTHQUAKE SAFETY LESSON =====\n";
+
+         // Introduces earthquakes and explains common dangers.
+         std::cout << "\nEarthquakes happen when energy is released beneath the Earth's surface.\n";
+         std::cout << "They can cause buildings to shake, objects to fall, and roads to crack.\n";
+         std::cout << "Strong earthquakes can damage buildings, utilities, and roads.\n";
+         std::cout << "Preparing ahead of time helps protect your household.\n";
+
+         // Displays preparation steps before an earthquake.
+         std::cout << "\n===== BEFORE AN EARTHQUAKE =====\n";
+         std::cout << "1. Secure heavy furniture, televisions, and bookcases to walls.\n";
+         std::cout << "2. Prepare an emergency kit with food, water, medications, and supplies.\n";
+         std::cout << "3. Identify safe places under sturdy tables or desks.\n";
+         std::cout << "4. Practice Drop, Cover, and Hold On with your household.\n";
+         std::cout << "5. Learn how to turn off gas, water, and electricity if necessary.\n";
+         std::cout << "6. Keep flashlights, batteries, and a first aid kit available.\n";
+
+         // Displays safety steps during an earthquake.
+         std::cout << "\n===== DURING AN EARTHQUAKE =====\n";
+         std::cout << "1. Drop to your hands and knees.\n";
+         std::cout << "2. Cover your head and neck under a sturdy table or desk.\n";
+         std::cout << "3. Hold On until the shaking stops.\n";
+         std::cout << "4. Stay away from windows and objects that could fall.\n";
+         std::cout << "5. If outside, move away from buildings, trees, and power lines.\n";
+         std::cout << "6. If driving, pull over safely and stay inside your vehicle.\n";
+
+         // Displays recovery steps after an earthquake.
+         std::cout << "\n===== AFTER AN EARTHQUAKE =====\n";
+         std::cout << "1. Check yourself and others for injuries.\n";
+         std::cout << "2. Be prepared for aftershocks and Drop, Cover, and Hold On again.\n";
+         std::cout << "3. Stay out of damaged buildings.\n";
+         std::cout << "4. Stay away from downed power lines and damaged utilities.\n";
+         std::cout << "5. Follow instructions from local emergency officials.\n";
+         std::cout << "6. Contact emergency services if someone needs immediate help.\n";
+
+         // Tests the user's understanding of earthquake safety.
+         std::cout << "\n===== EARTHQUAKE KNOWLEDGE CHECK =====\n";
+
+         // Question 1
+         std::cout << "\n1. What should you do when an earthquake begins?\n";
+         std::cout << "1. Run outside immediately.\n";
+         std::cout << "2. Drop, Cover, and Hold On.\n";
+         std::cout << "3. Stand near a window.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == EARTHQUAKE_QUESTION_ONE_ANSWER)
+         {
+             std::cout << "Correct! Drop, Cover, and Hold On helps protect you.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Drop, Cover, and Hold On is the recommended action.\n";
+         }
+
+         // Question 2
+         std::cout << "\n2. What should you do before an earthquake?\n";
+         std::cout << "1. Secure heavy furniture and prepare emergency supplies.\n";
+         std::cout << "2. Place heavy objects on high shelves.\n";
+         std::cout << "3. Ignore emergency preparations.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == EARTHQUAKE_QUESTION_TWO_ANSWER)
+         {
+             std::cout << "Correct! Securing furniture and preparing supplies improves safety.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Secure heavy furniture and prepare emergency supplies.\n";
+         }
+
+         // Question 3
+         std::cout << "\n3. What should you do after an earthquake?\n";
+         std::cout << "1. Enter damaged buildings to inspect them.\n";
+         std::cout << "2. Stand near damaged power lines.\n";
+         std::cout << "3. Stay out of damaged buildings and watch for aftershocks.\n";
+
+         answer = Input::GetNumber(
+             "Choose 1-3: ", MIN_ANSWER_CHOICE, MAX_ANSWER_CHOICE);
+
+         if (answer == EARTHQUAKE_QUESTION_THREE_ANSWER)
+         {
+             std::cout << "Correct! Avoid damaged buildings and prepare for aftershocks.\n";
+             score++;
+         }
+         else
+         {
+             std::cout << "Incorrect. Stay out of damaged buildings and watch for aftershocks.\n";
+         }
+
+         // Displays the final knowledge check score.
+         std::cout << "\nYour knowledge check score: "
+             << score << " out of " << TOTAL_QUESTIONS << ".\n";
+
+         // Provides an official resource for additional earthquake information.
+         std::cout << "\n===== WANT TO LEARN MORE? =====\n";
+         std::cout << "Visit Ready.gov - Earthquakes.\n";
+         std::cout << "Website: https://www.ready.gov/earthquakes\n";
+
+         std::cout << "\nYou have completed the Earthquake Safety lesson!\n";
+
+         return score;
+     }
+
+
+        
+   
+
 

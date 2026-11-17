@@ -45,10 +45,15 @@ private:
 	static const int HOUSE_FIRE_QUESTION_ONE_ANSWER = 2;
 	static const int HOUSE_FIRE_QUESTION_TWO_ANSWER = 1;
 	static const int HOUSE_FIRE_QUESTION_THREE_ANSWER = 3;
+
+	// Correct answers for the Winter Storm knowledge check.
+	static const int EARTHQUAKE_QUESTION_ONE_ANSWER = 2;
+	static const int EARTHQUAKE_QUESTION_TWO_ANSWER = 1;
+	static const int EARTHQUAKE_QUESTION_THREE_ANSWER = 3;
 	
 	// Emergency lesson menu choices.
 	static const int MIN_LESSON_CHOICE = 1;
-	static const int MAX_LESSON_CHOICE = 4;
+	static const int MAX_LESSON_CHOICE = 5;
 
 	// Displays the Power Outage Lesson section.
 	void DisplayBeforeOutage();
@@ -62,7 +67,7 @@ private:
 	int DisplayTornadoLesson();
 	int DisplayHurricaneLesson();
 	int DisplayHouseFireLesson();
-	int DisplayWinterStormLesson();
+	int DisplayEarthquakeLesson();
 };
 
 #endif
