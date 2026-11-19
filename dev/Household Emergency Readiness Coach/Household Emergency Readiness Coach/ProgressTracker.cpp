@@ -43,8 +43,22 @@ void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 {
 	completedLessons++;
 
-	// Save the name of the completed lesson.
-	completedLessonNames.push_back(lessonName);
+	// Check whether the lesson name is already saved.
+	bool lessonAlreadyListed = false;
+
+	for (std::string name : completedLessonNames)
+	{
+		if (name == lessonName)
+		{
+			lessonAlreadyListed = true;
+		}
+	}
+
+	// Add the lesson name only if it is not already listed.
+	if (!lessonAlreadyListed)
+	{
+		completedLessonNames.push_back(lessonName);
+	}
 
 	// Award the First Lesson achievement.
 	if (completedLessons >= FIRST_LESSON_REQUIREMENT && !firstLessonEarned)
@@ -69,8 +83,22 @@ void ProgressTracker::CompleteScenario(bool correct, std::string scenarioName)
 {
 	completedScenarios++;
 
-	// Save the name of the completed scenario.
-	completedScenarioNames.push_back(scenarioName);
+	// Checks whether the scenario name is already saved.
+	bool scenarioAlreadyListed = false;
+
+	for (std::string name : completedScenarioNames)
+	{
+		if (name == scenarioName)
+		{
+			scenarioAlreadyListed = true;
+		}
+	}
+
+	// Add the scenario name only if it is not already listed.
+	if (!scenarioAlreadyListed)
+	{
+		completedScenarioNames.push_back(scenarioName);
+	}
 
 	// Count the decision only when the user chooses the safe answer.
 	if (correct)
@@ -148,7 +176,7 @@ void ProgressTracker::DisplayProgress()
 	}
 }
 
-// saves the user's progress to a file.
+
 // Saves the user's progress to a file.
 void ProgressTracker::SaveProgress()
 {
