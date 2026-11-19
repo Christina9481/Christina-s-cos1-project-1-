@@ -25,7 +25,7 @@ private:
 	static const int TORNADO_EVENT = 2;
 	static const int HURRICANE_EVENT = 3;
 	static const int HOUSE_FIRE_EVENT = 4;
-	static const int WINTER_STORM_EVENT = 5;
+	static const int EARTHQUAKE_EVENT = 5;
 
 
 	// Points to the existing Household object
