@@ -14,6 +14,9 @@ public:
 	// Displays an emergency preparedness lesson.
 	int Display();
 
+	// Displays additional resources for the selected lesson.
+	void DisplayResource();
+
 	// Returns the name of the selected lesson.
 	std::string GetLessonName();
 

@@ -127,11 +127,6 @@ int Lesson::DisplayTornadoLesson()
     std::cout << "\nYour knowledge check score: "
         << score << " out of " << TOTAL_QUESTIONS << ".\n";
 
-    // Provides an official resource for additional tornado safety information.
-    std::cout << "\n===== WANT TO LEARN MORE? =====\n";
-    std::cout << "Visit the National Weather Service - Tornado Safety.\n";
-    std::cout << "Website: https://www.weather.gov/safety/tornado\n";
-
     // Returns the number of correct answers.
     return score;
 }
@@ -270,7 +265,10 @@ int Lesson::Display()
     {
         lessonName = "Power Outage";
 
+
         std::cout << "\n===== EMERGENCY LESSON: POWER OUTAGE =====\n";
+
+
 
         DisplayBeforeOutage();
         DisplayDuringOutage();
@@ -312,12 +310,18 @@ int Lesson::Display()
     {
         lessonName = "House Fire Safety";
         score = DisplayHouseFireLesson();
+
+        std::cout << "\nYou have completed the House Fire Safety lesson!\n";
     }
     else
     {
         lessonName = "Earthquake Safety Preparedness";
         score = DisplayEarthquakeLesson();
+
+        std::cout << "\nYou have completed the Earthquake Safety lesson!\n";
     }
+
+    return score;
 }
 
 
@@ -426,13 +430,6 @@ int Lesson::Display()
          // Displays the final knowledge check score.
          std::cout << "\nYour knowledge check score: "
              << score << " out of " << TOTAL_QUESTIONS << ".\n";
-
-         // Provides an official resource for additional hurricane safety information.
-         std::cout << "\n===== WANT TO LEARN MORE? =====\n";
-         std::cout << "Visit the National Weather Service - Hurricane Safety.\n";
-         std::cout << "Website: https://www.weather.gov/safety/hurricane\n";
-
-
 
          // Returns the number of correct answers.
          return score;
@@ -547,11 +544,6 @@ int Lesson::Display()
          std::cout << "\nYour knowledge check score: "
              << score << " out of " << TOTAL_QUESTIONS << ".\n";
 
-         // Provides an official resource for additional fire safety information.
-         std::cout << "\n===== WANT TO LEARN MORE? =====\n";
-         std::cout << "Visit the National Fire Protection Association - Home Fire Safety.\n";
-         std::cout << "Website: https://www.nfpa.org/education-and-research/home-fire-safety\n";
-
          // Returns the number of correct answers.
          return score;
      }
@@ -661,14 +653,40 @@ int Lesson::Display()
          std::cout << "\nYour knowledge check score: "
              << score << " out of " << TOTAL_QUESTIONS << ".\n";
 
-         // Provides an official resource for additional earthquake information.
-         std::cout << "\n===== WANT TO LEARN MORE? =====\n";
-         std::cout << "Visit Ready.gov - Earthquakes.\n";
-         std::cout << "Website: https://www.ready.gov/earthquakes\n";
-
-         std::cout << "\nYou have completed the Earthquake Safety lesson!\n";
-
          return score;
+     }
+
+    
+     // Displays additional resources for the completed lesson.
+     void Lesson::DisplayResource()
+     {
+         std::cout << "\n===== WANT TO LEARN MORE? =====\n";
+
+         if (lessonName == "Power Outage")
+         {
+             std::cout << "Visit Ready.gov - Power Outages.\n";
+             std::cout << "Website: https://www.ready.gov/power-outages\n";
+         }
+         else if (lessonName == "Tornado Safety")
+         {
+             std::cout << "Visit the National Weather Service - Tornado Safety.\n";
+             std::cout << "Website: https://www.weather.gov/safety/tornado\n";
+         }
+         else if (lessonName == "Hurricane Safety")
+         {
+             std::cout << "Visit the National Weather Service - Hurricane Safety.\n";
+             std::cout << "Website: https://www.weather.gov/safety/hurricane\n";
+         }
+         else if (lessonName == "House Fire Safety")
+         {
+             std::cout << "Visit the National Fire Protection Association - Home Fire Safety.\n";
+             std::cout << "Website: https://www.nfpa.org/education-and-research/home-fire-safety\n";
+         }
+         else if (lessonName == "Earthquake Safety Preparedness")
+         {
+             std::cout << "Visit Ready.gov - Earthquakes.\n";
+             std::cout << "Website: https://www.ready.gov/earthquakes\n";
+         }
      }
 
 

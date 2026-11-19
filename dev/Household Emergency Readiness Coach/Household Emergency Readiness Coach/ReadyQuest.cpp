@@ -98,6 +98,9 @@ void ReadyQuest::Run()
 			ConsoleColor::SetColor(ConsoleColor::GREEN);
 			std::cout << "You earned " << lessonScore * LESSON_POINTS_PER_ANSWER << " points!\n";
 			ConsoleColor::ResetColor();
+
+			// Displays additional resources for the Completed lesson.
+			lesson.DisplayResource();
 			break;
 		}
 
