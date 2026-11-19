@@ -13,7 +13,7 @@ private:
 
 	// Menu option numbers.
 	static const int MIN_MENU_CHOICE = 1;
-	static const int MAX_MENU_CHOICE = 6;
+	static const int MAX_MENU_CHOICE = 7;
 	static const int EXIT_MENU_CHOICE = 6;
 	
 	// Points awarded or deducted during activities.

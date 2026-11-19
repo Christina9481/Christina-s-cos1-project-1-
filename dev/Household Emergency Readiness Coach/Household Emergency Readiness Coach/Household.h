@@ -44,6 +44,9 @@ public:
     // Checks whether the hosuehold has flashlights
     bool HasFlashlights();
 
+    // Resets all household preparedness checklists.
+    void ResetHousehold();
+
     // Saves household preparedness answers.
     void SaveHousehold();
 

@@ -243,6 +243,26 @@ void Household::Display()
     checklistCompleted[emergencyIndex] = true;
 }
 
+// Resets all five household preparedness checklists.
+void Household::ResetHousehold()
+{
+    // Clears every checklist answer and completion flag.
+    for (int i = 0; i < TOTAL_EMERGENCIES; i++)
+    {
+        checklistCompleted[i] = false;
+
+        for (int j = 0; j < TOTAL_PREPARATIONS; j++)
+        {
+            preparations[i][j] = false;
+        }
+    }
+
+    // Saves the cleared household information.
+    SaveHousehold();
+
+    std::cout << "Household preparedness checklists have been reset.\n";
+}
+
 // Saves household preparedness answers to a file.
 void Household::SaveHousehold()
 {

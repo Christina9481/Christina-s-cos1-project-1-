@@ -44,6 +44,9 @@ public:
 
 	void DisplayProgress();
 
+	// resets all saved progress.
+	void ResetProgress();
+
 	// Saves and loads the user's progress.
 	void SaveProgress();
 	void LoadProgress();

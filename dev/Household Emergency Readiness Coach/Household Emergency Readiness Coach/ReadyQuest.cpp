@@ -70,7 +70,8 @@ void ReadyQuest::Run()
 		std::cout << "4. Progress and Achievements\n";
 		std::cout << "5. Random Emergency Events\n";
 		std::cout << "6. Exit\n";
-		
+		std::cout << "7. Reset Saved Progress\n";
+
 		// Restores the default text color.
 		ConsoleColor::ResetColor();
 
@@ -165,6 +166,29 @@ void ReadyQuest::Run()
 			// Displays a randomly selected emergency event.
 			emergencyEvent.DisplayRandomEvent();
 			break;
+
+		case 7:
+		{
+			// Asks the user to confirm before resetting saved information.
+			int resetChoice = Input::GetNumber(
+				"\nAre you sure you want to erase all saved progress and household information?\n"
+				"1. Yes, start a new game\n"
+				"2. No, keep my saved information\n"
+				"Enter your choice: ", 1, 2);
+
+			if (resetChoice == 1)
+			{
+				// Resets progress and household preparedness information.
+				progress.ResetProgress();
+				household.ResetHousehold();
+			}
+			else
+			{
+				std::cout << "Reset canceled. Your saved information was kept.\n";
+			}
+
+			break;
+		}
 
 		case EXIT_MENU_CHOICE:
 			// Saves the user's progress before exiting.

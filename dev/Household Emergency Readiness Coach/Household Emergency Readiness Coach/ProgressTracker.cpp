@@ -176,6 +176,29 @@ void ProgressTracker::DisplayProgress()
 	}
 }
 
+// Resets all progress values, achievements, and completed names.
+void ProgressTracker::ResetProgress()
+{
+	totalPoints = 0;
+	completedLessons = 0;
+	completedScenarios = 0;
+	correctScenarioDecisions = 0;
+
+	// Reset all achievements.
+	firstLessonEarned = false;
+	knowledgeChampionEarned = false;
+	safeDecisionEarned = false;
+	safetyExpertEarned = false;
+
+	// Clear completed lesson and scenario names.
+	completedLessonNames.clear();
+	completedScenarioNames.clear();
+
+	// Save the cleared progress.
+	SaveProgress();
+
+	std::cout << "Your progress has been reset.\n";
+}
 
 // Saves the user's progress to a file.
 void ProgressTracker::SaveProgress()
