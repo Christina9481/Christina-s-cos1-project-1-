@@ -60,8 +60,8 @@ void ReadyQuest::Run()
 	// Keep showing the menu until the user chooses Exit.
 	while (choice != EXIT_MENU_CHOICE)
 	{
-		// Displays the main menu in yellow.
-		ConsoleColor::SetColor(ConsoleColor::YELLOW);
+		// Displays the main menu in orange.
+		ConsoleColor::SetColor(ConsoleColor::ORANGE);
 
 		std::cout << "\n===== ReadyQuest =====\n";
 		std::cout << "1. Emergency Lessons\n";
@@ -108,32 +108,44 @@ void ReadyQuest::Run()
 		{
 			// Creates and displays an emergency scenario.
 			Scenario scenario;
-			int scenarioChoice = scenario.Display();
+			int scenarioMenuChoice = 0;
 
-			// Records the completed scenario.
-			if (scenarioChoice >= 1 && scenarioChoice <= 3)
+			// Keeps the scenario menu open until the user exits.
+			while (scenarioMenuChoice != 6)
 			{
-				progress.CompleteScenario(scenarioChoice == 2, "Power Outage Scenario");
+				scenarioMenuChoice = scenario.DisplayMenu();
 
-				// Awards points for the safe decision.
-				if (scenarioChoice == 2)
+				// Runs the selected emergency scenario.
+				if (scenarioMenuChoice >= 1 && scenarioMenuChoice <= 5)
 				{
-					progress.AddPoints(SCENARIO_SAFE_POINTS);
-					// Displays earned points in green.
-					ConsoleColor::SetColor(ConsoleColor::GREEN);
-					std::cout << "You earned " << SCENARIO_SAFE_POINTS << " points!\n";
-					ConsoleColor::ResetColor();
+					bool correct = scenario.Display(scenarioMenuChoice);
+
+					// Records the scenario and whether the decision was safe.
+					progress.CompleteScenario(
+						correct, scenario.GetScenarioName(scenarioMenuChoice));
+
+					// Awards points for a safe decision.
+					if (correct)
+					{
+						progress.AddPoints(SCENARIO_SAFE_POINTS);
+
+						ConsoleColor::SetColor(ConsoleColor::GREEN);
+						std::cout << "You earned "
+							<< SCENARIO_SAFE_POINTS << " points!\n";
+						ConsoleColor::ResetColor();
+					}
+					// Deducts points for an unsafe decision.
+					else
+					{
+						progress.SubtractPoints(SCENARIO_UNSAFE_PENALTY);
+
+						ConsoleColor::SetColor(ConsoleColor::RED);
+						std::cout << "You lost "
+							<< SCENARIO_UNSAFE_PENALTY << " points.\n";
+						ConsoleColor::ResetColor();
+					}
 				}
 
-				// Deducts points for an unsafe decision.
-				else
-				{
-					progress.SubtractPoints(SCENARIO_UNSAFE_PENALTY);
-					// Displays lost points in red.
-					ConsoleColor::SetColor(ConsoleColor::RED);
-					std::cout << "You lost " << SCENARIO_UNSAFE_PENALTY << " points.\n";
-					ConsoleColor::ResetColor();
-				}
 			}
 			break;
 		}
