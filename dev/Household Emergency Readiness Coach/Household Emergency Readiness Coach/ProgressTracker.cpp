@@ -41,10 +41,24 @@ void ProgressTracker::SubtractPoints(int points)
 // Increases the completed lesson count.
 void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 {
-	completedLessons++;
 
-	// Save the name of the completed lesson.
-	completedLessonNames.push_back(lessonName);
+	// Check whether the lesson name is already saved.
+	bool lessonAlreadyListed = false;
+
+	for (std::string name : completedLessonNames)
+	{
+		if (name == lessonName)
+		{
+			lessonAlreadyListed = true;
+		}
+	}
+
+	// Onlny count a lesson the first time it is completed.
+	if (!lessonAlreadyListed)
+	{
+		completedLessonNames.push_back(lessonName);
+		completedLessons++;
+	}
 
 	// Award the First Lesson achievement.
 	if (completedLessons >= FIRST_LESSON_REQUIREMENT && !firstLessonEarned)
@@ -67,10 +81,24 @@ void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 // Tracks completed scenarios and correct safety decisions.
 void ProgressTracker::CompleteScenario(bool correct, std::string scenarioName)
 {
-	completedScenarios++;
 
-	// Save the name of the completed scenario.
-	completedScenarioNames.push_back(scenarioName);
+	// Checks whether the scenario name is already saved.
+	bool scenarioAlreadyListed = false;
+
+	for (std::string name : completedScenarioNames)
+	{
+		if (name == scenarioName)
+		{
+			scenarioAlreadyListed = true;
+		}
+	}
+
+	// Only count a scenario the first time it is completed.
+	if (!scenarioAlreadyListed)
+	{
+		completedScenarioNames.push_back(scenarioName);
+		completedScenarios++;
+	}
 
 	// Count the decision only when the user chooses the safe answer.
 	if (correct)
@@ -148,7 +176,30 @@ void ProgressTracker::DisplayProgress()
 	}
 }
 
-// saves the user's progress to a file.
+// Resets all progress values, achievements, and completed names.
+void ProgressTracker::ResetProgress()
+{
+	totalPoints = 0;
+	completedLessons = 0;
+	completedScenarios = 0;
+	correctScenarioDecisions = 0;
+
+	// Reset all achievements.
+	firstLessonEarned = false;
+	knowledgeChampionEarned = false;
+	safeDecisionEarned = false;
+	safetyExpertEarned = false;
+
+	// Clear completed lesson and scenario names.
+	completedLessonNames.clear();
+	completedScenarioNames.clear();
+
+	// Save the cleared progress.
+	SaveProgress();
+
+	std::cout << "Your progress has been reset.\n";
+}
+
 // Saves the user's progress to a file.
 void ProgressTracker::SaveProgress()
 {

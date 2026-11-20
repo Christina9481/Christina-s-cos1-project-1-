@@ -134,31 +134,34 @@ void EmergencyEvent::DisplayRandomEvent()
         break;
     }
 
-    case WATER_INTERRUPTION_EVENT:
+    case HURRICANE_EVENT:
     {
-        std::cout << "WATER SUPPLY INTERRUPTION\n";
-        std::cout << "Your home suddenly loses access to running water.\n";
+        std::cout << "HURRICANE\n";
+        std::cout << "A hurricane warning has been issued for your area.\n";
 
-        std::cout << "\nWhat should you do first?\n";
-        std::cout << "1. Use bottled water stored for emergencies.\n";
-        std::cout << "2. Drink water from an unknown outdoor source.\n";
-        std::cout << "3. Assume the water will return immediately.\n";
+        std::cout << "\nWhat should you do?\n";
+        std::cout << "1. Ignore the warnings and wait for the storm.\n";
+        std::cout << "2. Follow local instructions and evacuate if ordered.\n";
+        std::cout << "3. Go outside to watch the storm.\n";
 
         int choice = Input::GetNumber(
             "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
-        if (choice == 1)
+        if (choice == 2)
         {
-            std::cout << "\nCorrect! Use your stored emergency water supply.\n";
+            std::cout << "\nCorrect! Follow instructions from local officials.\n";
+            std::cout << "Evacuate when ordered and use designated evacuation routes.\n";
         }
         else
         {
             std::cout << "\nThat is not the safest choice.\n";
-            std::cout << "Use stored safe drinking water when available.\n";
+            std::cout << "Follow local emergency instructions.\n";
+            std::cout << "If you are not evacuating, shelter indoors away from windows.\n";
         }
 
         break;
     }
+
 
     case HOUSE_FIRE_EVENT:
     {
@@ -186,27 +189,28 @@ void EmergencyEvent::DisplayRandomEvent()
         break;
     }
 
-    case WINTER_STORM_EVENT:
+    case EARTHQUAKE_EVENT:
     {
-        std::cout << "WINTER STORM\n";
-        std::cout << "A winter storm is approaching your area.\n";
+        std::cout << "EARTHQUAKE\n";
+        std::cout << "The ground suddenly begins shaking.\n";
 
-        std::cout << "\nWhat should you do to prepare?\n";
-        std::cout << "1. Wait until the storm arrives to gather supplies.\n";
-        std::cout << "2. Prepare food, water, warm clothing, and emergency supplies.\n";
-        std::cout << "3. Travel during the storm to buy supplies.\n";
+        std::cout << "\nWhat should you do?\n";
+        std::cout << "1. Run outside while the ground is shaking.\n";
+        std::cout << "2. Drop, cover, and hold on.\n";
+        std::cout << "3. Stand near a window.\n";
 
         int choice = Input::GetNumber(
             "Enter your choice (1-3): ", MIN_EVENT_CHOICE, MAX_EVENT_CHOICE);
 
         if (choice == 2)
         {
-            std::cout << "\nCorrect! Prepare supplies before the storm arrives.\n";
+            std::cout << "\nCorrect! Drop, cover, and hold on.\n";
+            std::cout << "Protect your head and neck and stay away from windows.\n";
         }
         else
         {
             std::cout << "\nThat is not the safest choice.\n";
-            std::cout << "Prepare early and avoid unnecessary travel during severe weather.\n";
+            std::cout << "Drop, cover, and hold on until the shaking stops.\n";
         }
 
         break;

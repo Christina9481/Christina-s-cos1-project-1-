@@ -23,16 +23,16 @@ private:
 	// Emergency event identifiers.
 	static const int POWER_OUTAGE_EVENT = 1;
 	static const int TORNADO_EVENT = 2;
-	static const int WATER_INTERRUPTION_EVENT = 3;
+	static const int HURRICANE_EVENT = 3;
 	static const int HOUSE_FIRE_EVENT = 4;
-	static const int WINTER_STORM_EVENT = 5;
+	static const int EARTHQUAKE_EVENT = 5;
 
 
 	// Points to the existing Household object
 	Household* household;
 
 	// Stores the five emergency event numbers.
-	int eventOrder[5];
+	int eventOrder[TOTAL_EVENTS];
 
 	// Tracks how many events have been used.
 	int eventsUsed;

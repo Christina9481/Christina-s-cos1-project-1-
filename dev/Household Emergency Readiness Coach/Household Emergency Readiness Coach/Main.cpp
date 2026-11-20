@@ -2,9 +2,14 @@
 //
 
 #include "ReadyQuest.h"
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
+	// Seeds the random number generator once when the program starts.
+	srand(static_cast<unsigned int>(time(0)));
+
    // Create the ReadyQuest application
 	ReadyQuest app;
 

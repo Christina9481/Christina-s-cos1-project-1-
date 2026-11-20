@@ -60,8 +60,8 @@ void ReadyQuest::Run()
 	// Keep showing the menu until the user chooses Exit.
 	while (choice != EXIT_MENU_CHOICE)
 	{
-		// Displays the main menu in yellow.
-		ConsoleColor::SetColor(ConsoleColor::YELLOW);
+		// Displays the main menu in orange.
+		ConsoleColor::SetColor(ConsoleColor::ORANGE);
 
 		std::cout << "\n===== ReadyQuest =====\n";
 		std::cout << "1. Emergency Lessons\n";
@@ -70,7 +70,8 @@ void ReadyQuest::Run()
 		std::cout << "4. Progress and Achievements\n";
 		std::cout << "5. Random Emergency Events\n";
 		std::cout << "6. Exit\n";
-		
+		std::cout << "7. Reset Saved Progress\n";
+
 		// Restores the default text color.
 		ConsoleColor::ResetColor();
 
@@ -89,7 +90,7 @@ void ReadyQuest::Run()
 			
 
 			// Records the completed lesson.
-			progress.CompleteLesson(lessonScore, "Power Outage");
+			progress.CompleteLesson(lessonScore, lesson.GetLessonName());
 			
 			// Awards 5 points for each correct knowledge check answer.
 			progress.AddPoints(lessonScore * LESSON_POINTS_PER_ANSWER);
@@ -98,6 +99,9 @@ void ReadyQuest::Run()
 			ConsoleColor::SetColor(ConsoleColor::GREEN);
 			std::cout << "You earned " << lessonScore * LESSON_POINTS_PER_ANSWER << " points!\n";
 			ConsoleColor::ResetColor();
+
+			// Displays additional resources for the Completed lesson.
+			lesson.DisplayResource();
 			break;
 		}
 
@@ -105,32 +109,44 @@ void ReadyQuest::Run()
 		{
 			// Creates and displays an emergency scenario.
 			Scenario scenario;
-			int scenarioChoice = scenario.Display();
+			int scenarioMenuChoice = 0;
 
-			// Records the completed scenario.
-			if (scenarioChoice >= 1 && scenarioChoice <= 3)
+			// Keeps the scenario menu open until the user exits.
+			while (scenarioMenuChoice != 6)
 			{
-				progress.CompleteScenario(scenarioChoice == 2, "Power Outage Scenario");
+				scenarioMenuChoice = scenario.DisplayMenu();
 
-				// Awards points for the safe decision.
-				if (scenarioChoice == 2)
+				// Runs the selected emergency scenario.
+				if (scenarioMenuChoice >= 1 && scenarioMenuChoice <= 5)
 				{
-					progress.AddPoints(SCENARIO_SAFE_POINTS);
-					// Displays earned points in green.
-					ConsoleColor::SetColor(ConsoleColor::GREEN);
-					std::cout << "You earned " << SCENARIO_SAFE_POINTS << " points!\n";
-					ConsoleColor::ResetColor();
+					bool correct = scenario.Display(scenarioMenuChoice);
+
+					// Records the scenario and whether the decision was safe.
+					progress.CompleteScenario(
+						correct, scenario.GetScenarioName(scenarioMenuChoice));
+
+					// Awards points for a safe decision.
+					if (correct)
+					{
+						progress.AddPoints(SCENARIO_SAFE_POINTS);
+
+						ConsoleColor::SetColor(ConsoleColor::GREEN);
+						std::cout << "You earned "
+							<< SCENARIO_SAFE_POINTS << " points!\n";
+						ConsoleColor::ResetColor();
+					}
+					// Deducts points for an unsafe decision.
+					else
+					{
+						progress.SubtractPoints(SCENARIO_UNSAFE_PENALTY);
+
+						ConsoleColor::SetColor(ConsoleColor::RED);
+						std::cout << "You lost "
+							<< SCENARIO_UNSAFE_PENALTY << " points.\n";
+						ConsoleColor::ResetColor();
+					}
 				}
 
-				// Deducts points for an unsafe decision.
-				else
-				{
-					progress.SubtractPoints(SCENARIO_UNSAFE_PENALTY);
-					// Displays lost points in red.
-					ConsoleColor::SetColor(ConsoleColor::RED);
-					std::cout << "You lost " << SCENARIO_UNSAFE_PENALTY << " points.\n";
-					ConsoleColor::ResetColor();
-				}
 			}
 			break;
 		}
@@ -151,6 +167,29 @@ void ReadyQuest::Run()
 			emergencyEvent.DisplayRandomEvent();
 			break;
 
+		case 7:
+		{
+			// Asks the user to confirm before resetting saved information.
+			int resetChoice = Input::GetNumber(
+				"\nAre you sure you want to erase all saved progress and household information?\n"
+				"1. Yes, start a new game\n"
+				"2. No, keep my saved information\n"
+				"Enter your choice: ", 1, 2);
+
+			if (resetChoice == 1)
+			{
+				// Resets progress and household preparedness information.
+				progress.ResetProgress();
+				household.ResetHousehold();
+			}
+			else
+			{
+				std::cout << "Reset canceled. Your saved information was kept.\n";
+			}
+
+			break;
+		}
+
 		case EXIT_MENU_CHOICE:
 			// Saves the user's progress before exiting.
 			progress.SaveProgress();
@@ -162,7 +201,7 @@ void ReadyQuest::Run()
 			break;
 
 		default:
-			std::cout << "Invalid choice. Please enter a number from 1 to 5.\n";
+			std::cout << "Invalid choice. Please enter a number from 1 to 7.\n";
 			break;
 		}
 	}

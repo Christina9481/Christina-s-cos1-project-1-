@@ -59,7 +59,7 @@ namespace Input
             std::cout << prompt;
             std::getline(std::cin, input);
 
-            if (!input.empty())
+            if (input.find_first_not_of(" \t\n\r") != std::string::npos)
             {
                 return input;
             }
