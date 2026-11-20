@@ -1,24 +1,3 @@
-# 🚀 Welcome to Project & Portfolio!
-
-This repository will be used to keep track of research and development conducted in this class. Follow the instructions below to get started.
-cos
-### Getting Started
-
-**1.** Review the [About](./docs/01_about/README.md) README and all of the links it provides.
-
-**2.** Review the documentation and [Getting Started](./docs/02_getting_started/README.md) steps in this repository's docs folder.
-
-**3.** Attend the first Live Lecture to see a live setup demo. If you are unable to attend, make sure to watch the archive.
-
-### Next Steps...
-
-After completing the above steps, feel free to begin updating this readme where indicated below. Remember to update this document each week to receive proper credit for the weekly Milestone assignment.
-
-<br>
-
-> ❗️ &nbsp; Now that you have read to this point, go ahead and delete this sentence and everything above it.
-
-<br>
 
 # Project & Portfolio 1
 
@@ -113,4 +92,25 @@ I plan to complete and test Save and Load functionality, continue refining Ready
 
 ### Week 4
 
-My final stand up...
+# Week 4 Weekly Stand-Up – ReadyQuest
+
+## Overview
+This week, I focused on completing and testing my ReadyQuest emergency preparedness application. I finished the remaining features, improved the console display, fixed issues, and prepared the project for final submission.
+
+## Challenges
+One challenge was fixing bugs and making sure the different classes worked together correctly. I also worked on improving the random emergency event rotation, preventing duplicate progress entries, and making the program easier to use.
+
+## Accomplishments
+- Completed save and load functionality.
+- Added an option to reset saved progress.
+- Improved emergency lessons and interactive scenarios.
+- Expanded household preparedness checklists to five emergencies.
+- Improved progress tracking and achievements.
+- Fixed random emergency event rotation.
+- Added console colors to improve readability.
+- Completed final application testing with 0 build errors.
+- Finished Milestone 4 documentation and screenshots.
+- Created and merged the final pull request into the main branch.
+
+## Next Steps
+ReadyQuest is complete for the course project. My next step is to verify the final README and repository, make sure all required files are included, and submit the public GitHub repository link and project board screenshot.
