@@ -1,7 +1,7 @@
 #include "Lesson.h"
 #include <iostream>
 #include "Input.h"
-
+#include "ConsoleColor.h"
 
 
 //Defines the Lesson constructor.
@@ -23,8 +23,10 @@ int Lesson::DisplayTornadoLesson()
 {
     int answer = 0;
     int score = 0;
-
-    std::cout << "\n===== TORNADO SAFETY LESSON =====\n";
+    
+    // Displays the lesson title in cyan
+    ConsoleColor::Print("\n===== TORNADO LESSON =====\n",
+        ConsoleColor::Ink::CYAN);
 
     // Introduces tornadoes and explains how to recognize them.
     std::cout << "\nTornadoes are powerful, rotating columns of air that extend from thunderstorms to the ground.\n";
@@ -33,7 +35,11 @@ int Lesson::DisplayTornadoLesson()
     std::cout << "A tornado may appear as a rotating, funnel-shaped cloud, but sometimes it is hidden by rain or darkness, and swirling debris near the ground may be the only visible clue.\n";
 
     // Displays preparation steps before a tornado.
-    std::cout << "\n===== BEFORE A TORNADO =====\n";
+    ConsoleColor::Print("\n===== BEFORE A TORNADO =====\n",
+        ConsoleColor::Ink::CYAN);
+   
+
+    // regular lesson txt remains white
     std::cout << "1. Identify a basement or interior room on the lowest floor.\n";
     std::cout << "2. Sign up for local emergency weather alerts.\n";
     std::cout << "3. Keep a battery-powered weather radio available.\n";
@@ -44,7 +50,9 @@ int Lesson::DisplayTornadoLesson()
     std::cout << "8. If you live in a mobile home, identify a nearby sturdy shelter.\n";
 
     // Displays safety steps during a tornado.
-    std::cout << "\n===== DURING A TORNADO =====\n";
+    ConsoleColor::Print("\n===== DURING A TORNADO =====\n",
+        ConsoleColor::Ink::CYAN);
+  
     std::cout << "1. Seek shelter immediately when a tornado warning is issued.\n";
     std::cout << "2. Go to a basement, storm shelter, or small interior room on the lowest floor.\n";
     std::cout << "3. Stay away from windows and exterior walls.\n";
@@ -54,7 +62,10 @@ int Lesson::DisplayTornadoLesson()
     std::cout << "7. Continue listening for official weather updates.\n";
 
     // Displays safety steps after a tornado.
-    std::cout << "\n===== AFTER A TORNADO =====\n";
+    ConsoleColor::Print("\n===== AFTER A TORNADO =====\n",
+        ConsoleColor::Ink::CYAN);
+    
+
     std::cout << "1. Check yourself and others for injuries.\n";
     std::cout << "2. Stay away from fallen power lines and damaged utility lines.\n";
     std::cout << "3. Do not enter damaged buildings until authorities say they are safe.\n";
@@ -64,8 +75,11 @@ int Lesson::DisplayTornadoLesson()
     std::cout << "7. Check on neighbors when it is safe to do so.\n";
 
     // Tests the user's understanding of tornado safety.
-    std::cout << "\n===== TORNADO KNOWLEDGE CHECK =====\n";
+    ConsoleColor::Print("\n===== TORNADO KNOWLEDGE CHECK =====\n",
+        ConsoleColor::Ink::CYAN);
 
+
+    ConsoleColor::SetColor(ConsoleColor::WHITE);
     // Question 1
     std::cout << "\n1. Where should you shelter during a tornado warning?\n";
     std::cout << "1. Near a window.\n";
@@ -77,12 +91,17 @@ int Lesson::DisplayTornadoLesson()
 
     if (answer == TORNADO_QUESTION_ONE_ANSWER)
     {
-        std::cout << "Correct! Interior shelter away from windows offers better protection.\n";
+        // Displays correct feedback in green.
+        ConsoleColor::Print("Correct! Interior shelter away from windows offers better protection.\n",
+            ConsoleColor::Ink::GREEN);
         score++;
     }
     else
     {
-        std::cout << "Incorrect. Seek shelter in a basement or interior room on the lowest floor.\n";
+       
+        // Displays incorrect feedback in red
+        ConsoleColor::Print("Incorrect. Seek shelter in a basement or interior room on the lowest floor.\n",
+            ConsoleColor::Ink::RED);
     }
 
     // Question 2
@@ -96,12 +115,17 @@ int Lesson::DisplayTornadoLesson()
 
     if (answer == TORNADO_QUESTION_TWO_ANSWER)
     {
-        std::cout << "Correct! Mobile homes do not provide reliable tornado shelter.\n";
+        // Displays correct feedback in green.
+        ConsoleColor::Print("Correct! Mobile homes do not provide reliable tornado shelter.\n",
+            ConsoleColor::Ink::GREEN);
         score++;
     }
     else
     {
-        std::cout << "Incorrect. Identify a sturdy shelter before severe weather threatens.\n";
+        // Displays incorrect feedback in red
+        ConsoleColor::Print("Incorrect. Identify a sturdy shelter before severe weather threatens.\n",
+            ConsoleColor::Ink::RED);
+     
     }
 
     // Question 3
@@ -115,12 +139,16 @@ int Lesson::DisplayTornadoLesson()
 
     if (answer == TORNADO_QUESTION_THREE_ANSWER)
     {
-        std::cout << "Correct! Fallen power lines and damaged buildings are dangerous.\n";
+        // Displays;
+        ConsoleColor::Print("Correct! Fallen power lines and damaged buildings are dangerous.\n",
+            ConsoleColor::Ink::GREEN);
         score++;
     }
     else
     {
-        std::cout << "Incorrect. Stay away from fallen power lines and damaged buildings.\n";
+        // Displays incorrect feedback in red
+        ConsoleColor::Print("Incorrect. Stay away from fallen power lines and damaged buildings.\n",
+            ConsoleColor::Ink::RED);
     }
 
     // Displays the final knowledge check score.
@@ -142,7 +170,8 @@ void Lesson::DisplayBeforeOutage()
     std::cout << "Without electricity, households may lose lighting, heating, cooling, and access to important appliances.\n";
     std::cout << "Knowing how to prepare and respond can help keep your household safe.\n";
 
-    std::cout << "\n===== BEFORE THE POWER OUTAGE =====\n";
+    ConsoleColor::Print("\n===== BEFORE THE POWER OUTAGE =====\n",
+        ConsoleColor::Ink::ORANGE);
     std::cout << "1. Keep flashlights and extra batteries available.\n";
     std::cout << "2. Store drinking water and nonperishable food.\n";
     std::cout << "3. Keep extra blankets available for warmth.\n";
@@ -153,7 +182,8 @@ void Lesson::DisplayBeforeOutage()
 // Displays safety steps during a power outage.
 void Lesson::DisplayDuringOutage()
 {
-    std::cout << "\n===== DURING THE POWER OUTAGE =====\n";
+    ConsoleColor::Print("\n===== DURING THE POWER OUTAGE =====\n",
+        ConsoleColor::Ink::ORANGE);
 
     std::cout << "1. Check whether the outage affects your neighborhood.\n";
     std::cout << "2. Use flashlights instead of candles.\n";
@@ -166,8 +196,10 @@ void Lesson::DisplayDuringOutage()
 // Displays recovery steps after electricity returns.
 void Lesson::DisplayAfterOutage()
 {
-    std::cout << "\n===== AFTER THE POWER OUTAGE =====\n";
+    ConsoleColor::Print("\n===== AFTER THE POWER OUTAGE =====\n",
+        ConsoleColor::Ink::ORANGE);
 
+   
     std::cout << "1. Check refrigerated food for safety.\n";
     std::cout << "2. Discard perishable food that has been above 40 degrees F for more than 2 hours.\n";
     std::cout << "3. Turn appliances back on safely.\n";
@@ -181,7 +213,11 @@ int Lesson::KnowledgeCheck()
     int answer = 0;
     int score = 0;
 
-    std::cout << "\n===== POWER OUTAGE KNOWLEDGE CHECK =====\n";
+    ConsoleColor::Print("\n===== POWER OUTAGE KNOWLEDGE CHECK =====\n",
+        ConsoleColor::Ink::ORANGE);
+
+    // Keeps the questions and answer choices white
+    ConsoleColor::SetColor(ConsoleColor::WHITE);
 
     // Question 1
     std::cout << "\n1. What should you use for lighting during a power outage?\n";
@@ -194,12 +230,15 @@ int Lesson::KnowledgeCheck()
 
     if (answer == QUESTION_ONE_ANSWER)
     {
-        std::cout << "Correct! Flashlights reduce fire risk.\n";
+
+        ConsoleColor::Print("Correct! Flashlights reduce fire risk.\n",
+            ConsoleColor::Ink::GREEN);
         score++;
     }
     else
     {
-        std::cout << "Incorrect. Flashlights are the safest.\n";
+        ConsoleColor::Print("Incorrect. Flashlights are the safest.\n",
+            ConsoleColor::Ink::RED);
     }
 
     // Question 2
@@ -213,12 +252,14 @@ int Lesson::KnowledgeCheck()
 
     if (answer == QUESTION_TWO_ANSWER)
     {
-        std::cout << "Correct! This helps prevent carbon monoxide poisoning.\n";
+        ConsoleColor::Print("Correct! This helps prevent carbon monoxide poisoning.\n",
+            ConsoleColor::Ink::GREEN);
         score++;
     }
     else
     {
-        std::cout << "Incorrect. Generators must operate outdoors, away from the home.\n";
+        ConsoleColor::Print("Incorrect. Generators must operate outdoors, away from the home.\n",
+            ConsoleColor::Ink::RED);
     }
 
     // Question 3
@@ -232,12 +273,14 @@ int Lesson::KnowledgeCheck()
 
     if (answer == QUESTION_THREE_ANSWER)
     {
-        std::cout << "Correct! Keeping the doors closed helps preserve food.\n";
+        ConsoleColor::Print("Correct! Keeping the doors closed helps preserve food.\n",
+            ConsoleColor::Ink::GREEN);
         score++;
     }
     else
     {
-        std::cout << "Incorrect. Keep refrigerator and freezer doors closed.\n";
+        ConsoleColor::Print("Incorrect. Keep refrigerator and freezer doors closed.\n",
+            ConsoleColor::Ink::RED);
     }
 
     // Display the final knowledge check score.
@@ -337,7 +380,8 @@ int Lesson::Display()
          int answer = 0;
          int score = 0;
 
-         std::cout << "\n===== HURRICANE SAFETY LESSON =====\n";
+         ConsoleColor::Print("\n===== HURRICANE SAFETY LESSON =====\n",
+             ConsoleColor::Ink::ORANGE);
 
          // Introduces hurricanes and explains how to recognize them.
          std::cout << "\nHurricanes are powerful tropical storms that form over warm ocean water.\n";
@@ -346,7 +390,8 @@ int Lesson::Display()
          std::cout << "Weather alerts help people know when a hurricane may threaten their area.\n";
 
          // Displays preparation steps before a hurricane.
-         std::cout << "\n===== BEFORE A HURRICANE =====\n";
+         ConsoleColor::Print("\n===== BEFORE A HURRICANE =====\n",
+             ConsoleColor::Ink::ORANGE);
          std::cout << "1. Monitor weather forecasts and emergency alerts.\n";
          std::cout << "2. Prepare an emergency kit with food, water, medications, and supplies.\n";
          std::cout << "3. Make a household communication and evacuation plan.\n";
@@ -356,7 +401,8 @@ int Lesson::Display()
          std::cout << "7. Follow evacuation instructions from local officials.\n";
 
          // Displays safety steps during a hurricane.
-         std::cout << "\n===== DURING A HURRICANE =====\n";
+         ConsoleColor::Print("\n===== DURING A HURRICANE =====\n",
+             ConsoleColor::Ink::ORANGE);
          std::cout << "1. Stay indoors and away from windows and glass doors.\n";
          std::cout << "2. Move to a small interior room on the lowest safe floor.\n";
          std::cout << "3. Keep listening to official weather and emergency updates.\n";
@@ -365,7 +411,9 @@ int Lesson::Display()
          std::cout << "6. Use flashlights instead of candles if the power goes out.\n";
 
          // Displays safety steps after a hurricane.
-         std::cout << "\n===== AFTER A HURRICANE =====\n";
+         ConsoleColor::Print("\n===== AFTER A HURRICANE =====\n",
+             ConsoleColor::Ink::ORANGE);
+
          std::cout << "1. Wait for officials to say it is safe before returning home.\n";
          std::cout << "2. Stay away from floodwater and downed power lines.\n";
          std::cout << "3. Avoid damaged buildings and report dangerous conditions.\n";
@@ -373,8 +421,9 @@ int Lesson::Display()
          std::cout << "5. Check household members and neighbors when it is safe.\n";
          std::cout << "6. Take photos of property damage for insurance records when safe.\n";
 
-         // Tests the user's understanding of hurricane safety.
-         std::cout << "\n===== HURRICANE KNOWLEDGE CHECK =====\n";
+         // Tests the user's understanding of hurricane safety in oragne.
+         ConsoleColor::Print("\n===== HURRICANE KNOWLEDGE CHECK =====\n",
+             ConsoleColor::Ink::ORANGE);
 
          // Question 1
          std::cout << "\n1. What should you do when local officials order an evacuation?\n";
@@ -387,12 +436,15 @@ int Lesson::Display()
 
          if (answer == HURRICANE_QUESTION_ONE_ANSWER)
          {
-             std::cout << "Correct! Follow evacuation instructions from local officials.\n";
+             ConsoleColor::Print("Correct! Follow evacuation instructions from local officials.\n",
+                 ConsoleColor::Ink::GREEN);
              score++;
          }
          else
          {
-             std::cout << "Incorrect. Follow evacuation instructions and leave safely.\n";
+             ConsoleColor::Print("Incorrect. Follow evacuation instructions and leave safely.\n",
+                 ConsoleColor::Ink::RED);
+             
          }
 
          // Question 2
@@ -406,12 +458,14 @@ int Lesson::Display()
 
          if (answer == HURRICANE_QUESTION_TWO_ANSWER)
          {
-             std::cout << "Correct! An interior room away from windows is safer.\n";
+             ConsoleColor::Print("Correct! An interior room away from windows is safer.\n",
+                 ConsoleColor::Ink::GREEN);
              score++;
          }
          else
          {
-             std::cout << "Incorrect. Stay in a small interior room away from windows.\n";
+             ConsoleColor::Print("Incorrect. Stay in a small interior room away from windows.\n",
+                 ConsoleColor::Ink::RED);
          }
 
          // Question 3
@@ -425,12 +479,14 @@ int Lesson::Display()
 
          if (answer == HURRICANE_QUESTION_THREE_ANSWER)
          {
-             std::cout << "Correct! Floodwater can hide dangerous hazards.\n";
+             ConsoleColor::Print("Correct! Floodwater can hide dangerous hazards.\n",
+                 ConsoleColor::Ink::GREEN);
              score++;
          }
          else
          {
-             std::cout << "Incorrect. Never walk or drive through floodwater.\n";
+             ConsoleColor::Print("Incorrect. Never walk or drive through floodwater.\n",
+                 ConsoleColor::Ink::RED);
          }
 
          // Displays the final knowledge check score.
