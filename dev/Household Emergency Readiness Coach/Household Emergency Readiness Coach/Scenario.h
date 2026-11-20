@@ -5,7 +5,7 @@
 
 #include <string>
 
-// Represents an interaction emergency scenario.
+// Represents an interactive emergency scenario.
 class Scenario
 {
 private:

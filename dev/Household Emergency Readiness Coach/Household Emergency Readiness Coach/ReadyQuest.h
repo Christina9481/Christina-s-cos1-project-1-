@@ -1,7 +1,8 @@
 #pragma once
-#include "ProgressTracker.h"
 #ifndef READYQUEST_H
 #define READYQUEST_H
+
+#include "ProgressTracker.h"
 #include "EmergencyEvent.h"
 #include "Household.h"
 

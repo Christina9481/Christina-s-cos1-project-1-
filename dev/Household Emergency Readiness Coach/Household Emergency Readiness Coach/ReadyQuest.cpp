@@ -201,7 +201,7 @@ void ReadyQuest::Run()
 			break;
 
 		default:
-			std::cout << "Invalid choice. Please enter a number from 1 to 5.\n";
+			std::cout << "Invalid choice. Please enter a number from 1 to 7.\n";
 			break;
 		}
 	}
