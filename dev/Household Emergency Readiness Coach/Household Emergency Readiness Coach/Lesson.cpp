@@ -135,8 +135,14 @@ int Lesson::DisplayTornadoLesson()
 // Displays the preparation steps before a power outage.
 void Lesson::DisplayBeforeOutage()
 {
-    std::cout << "\n===== BEFORE THE POWER OUTAGE =====\n";
 
+    // Introduces power outages and explains common causes.
+    std::cout << "\nA power outage occurs when electricity stops flowing to homes and businesses.\n";
+    std::cout << "Outages can happen because of severe weather, damaged power lines, or equipment failures.\n";
+    std::cout << "Without electricity, households may lose lighting, heating, cooling, and access to important appliances.\n";
+    std::cout << "Knowing how to prepare and respond can help keep your household safe.\n";
+
+    std::cout << "\n===== BEFORE THE POWER OUTAGE =====\n";
     std::cout << "1. Keep flashlights and extra batteries available.\n";
     std::cout << "2. Store drinking water and nonperishable food.\n";
     std::cout << "3. Keep extra blankets available for warmth.\n";
@@ -315,7 +321,7 @@ int Lesson::Display()
     }
     else
     {
-        lessonName = "Earthquake Safety Preparedness";
+        lessonName = "Earthquake Safety";
         score = DisplayEarthquakeLesson();
 
         std::cout << "\nYou have completed the Earthquake Safety lesson!\n";
@@ -682,10 +688,14 @@ int Lesson::Display()
              std::cout << "Visit the National Fire Protection Association - Home Fire Safety.\n";
              std::cout << "Website: https://www.nfpa.org/education-and-research/home-fire-safety\n";
          }
-         else if (lessonName == "Earthquake Safety Preparedness")
+         else if (lessonName == "Earthquake Safety")
          {
              std::cout << "Visit Ready.gov - Earthquakes.\n";
              std::cout << "Website: https://www.ready.gov/earthquakes\n";
+         }
+         else
+         {
+             std::cout << "No additional resources are available.\n";
          }
      }
 
