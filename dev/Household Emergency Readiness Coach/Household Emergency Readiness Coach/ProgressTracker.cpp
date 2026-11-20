@@ -41,7 +41,6 @@ void ProgressTracker::SubtractPoints(int points)
 // Increases the completed lesson count.
 void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 {
-	completedLessons++;
 
 	// Check whether the lesson name is already saved.
 	bool lessonAlreadyListed = false;
@@ -54,10 +53,11 @@ void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 		}
 	}
 
-	// Add the lesson name only if it is not already listed.
+	// Onlny count a lesson the first time it is completed.
 	if (!lessonAlreadyListed)
 	{
 		completedLessonNames.push_back(lessonName);
+		completedLessons++;
 	}
 
 	// Award the First Lesson achievement.
@@ -81,7 +81,6 @@ void ProgressTracker::CompleteLesson(int score, std::string lessonName)
 // Tracks completed scenarios and correct safety decisions.
 void ProgressTracker::CompleteScenario(bool correct, std::string scenarioName)
 {
-	completedScenarios++;
 
 	// Checks whether the scenario name is already saved.
 	bool scenarioAlreadyListed = false;
@@ -94,10 +93,11 @@ void ProgressTracker::CompleteScenario(bool correct, std::string scenarioName)
 		}
 	}
 
-	// Add the scenario name only if it is not already listed.
+	// Only count a scenario the first time it is completed.
 	if (!scenarioAlreadyListed)
 	{
 		completedScenarioNames.push_back(scenarioName);
+		completedScenarios++;
 	}
 
 	// Count the decision only when the user chooses the safe answer.
