@@ -32,7 +32,7 @@ private:
 	Household* household;
 
 	// Stores the five emergency event numbers.
-	int eventOrder[5];
+	int eventOrder[TOTAL_EVENTS];
 
 	// Tracks how many events have been used.
 	int eventsUsed;

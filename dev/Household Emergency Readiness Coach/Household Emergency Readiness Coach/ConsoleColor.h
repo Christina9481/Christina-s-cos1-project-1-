@@ -13,7 +13,7 @@ public:
         CYAN = 11,
         RED = 12,
         MAGENTA = 13,
-        YELLOW = 14,
+        ORANGE= 14,
         WHITE = 15
     };
 
