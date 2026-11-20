@@ -26,18 +26,20 @@ int Household::CalculatePreparedness(int emergencyIndex)
 {
     int totalPrepared = 0;
 
-    // Counts the yes answers for the selected emergency.
-    for (int i = 0; i < TOTAL_PREPARATIONS; i++)
+    if (emergencyIndex >= 0 && emergencyIndex < TOTAL_EMERGENCIES)
     {
-        if (preparations[emergencyIndex][i])
+        // Counts the yes answers for the selected emergency.
+        for (int i = 0; i < TOTAL_PREPARATIONS; i++)
         {
-            totalPrepared++;
+            if (preparations[emergencyIndex][i])
+            {
+                totalPrepared++;
+            }
         }
     }
 
     return totalPrepared;
 }
-
 // Displays missing preparation and a readiness summary.
 void Household::DisplayPreparednessFeedback(int emergencyIndex)
 {

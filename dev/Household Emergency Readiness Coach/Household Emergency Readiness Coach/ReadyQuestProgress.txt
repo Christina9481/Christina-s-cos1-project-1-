@@ -1,10 +1,17 @@
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
+110
+5
+2
+3
+1
+1
+1
+1
+5
+Power Outage
+Tornado Safety
+Hurricane Safety
+House Fire Safety
+Earthquake Safety Preparedness
+2
+Power Outage Scenario
+House Fire Scenario
